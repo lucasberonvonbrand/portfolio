@@ -11,18 +11,19 @@
 
 .education-item-container {
   display: flex;
-  align-items: center;
-  max-width: 700px;
+  align-items: center; /* Centra verticalmente el logo con el texto */
+  max-width: 850px; /* Aumenta el ancho máximo para más espacio */
   margin: 0 auto 30px auto;
   background: var(--card-background-color);
   padding: 25px;
   border-radius: 8px;
   box-shadow: 0 4px 6px var(--shadow-color);
   border-left: 5px solid var(--primary-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .education-logo {
-  width: 80px;
+  width: 100px; /* Aumenta el tamaño del logo */
   height: auto;
   margin-right: 20px;
 }
@@ -48,4 +49,19 @@
 
 .education-item p:last-child {
   margin-bottom: 0;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .education-item-container {
+    flex-direction: column; /* Apila el logo y el texto verticalmente */
+    align-items: center; /* Centra los elementos */
+    text-align: center;
+  }
+
+  .education-logo {
+    margin-right: 0; /* Quita el margen derecho */
+    margin-bottom: 20px; /* Añade espacio debajo del logo */
+    width: 80px; /* Puedes ajustar el tamaño del logo para móviles si es necesario */
+  }
 }
