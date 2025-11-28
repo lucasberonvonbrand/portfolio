@@ -1,0 +1,93 @@
+.projects-section {
+  padding: 60px 0;
+  background-color: var(--background-color);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+}
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 25px;
+  background-color: var(--card-background-color);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+}
+
+.project-card h3 {
+  margin-top: 0;
+  color: var(--primary-color);
+  font-size: 1.4rem;
+}
+
+.project-card ul {
+  padding-left: 20px;
+  flex-grow: 1; /* Pushes the button to the bottom */
+  color: var(--secondary-text-color);
+  margin-bottom: 20px;
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.tech-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #e9ecef;
+  color: var(--secondary-text-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.tech-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.github-link {
+  display: inline-block;
+  margin-top: auto; /* Aligns button to the bottom */
+  padding: 10px 15px;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.3s;
+  font-weight: 600;
+}
+
+.github-link:hover {
+  background-color: var(--primary-hover-color);
+}
+
+@media (max-width: 768px) {
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+}

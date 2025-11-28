@@ -1,0 +1,16 @@
+<section id="tecnologias" class="skills-section">
+  <h2>Habilidades Técnicas</h2>
+
+  <div *ngFor="let category of skillCategories" class="skill-category">
+    <h3 class="category-title">{{ category.title }}</h3>
+    <div class="skills-container">
+      <div class="skill-tag" *ngFor="let skill of category.skills">
+        <div class="skill-icon-wrapper">
+          <img [src]="'assets/' + skill.icon" [alt]="skill.name + ' logo'" class="skill-icon">
+        </div>
+        <span class="skill-name">{{ skill.name }}</span>
+        <span class="skill-description">{{ skill.description }}</span>
+      </div>
+    </div>
+  </div>
+</section>

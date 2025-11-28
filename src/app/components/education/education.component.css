@@ -1,0 +1,51 @@
+.education-section {
+  padding: 60px 20px;
+  background-color: var(--background-color);
+}
+
+.education-section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+}
+
+.education-item-container {
+  display: flex;
+  align-items: center;
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+  background: var(--card-background-color);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  border-left: 5px solid var(--primary-color);
+}
+
+.education-logo {
+  width: 80px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.education-item {
+  /* Los estilos de la tarjeta se movieron a .education-item-container */
+  /* Este contenedor ahora solo organiza el texto */
+  flex: 1;
+}
+
+.education-item h3 {
+  margin-top: 0;
+  color: var(--text-color);
+  font-size: 1.4rem;
+}
+
+.education-item .institution {
+  font-style: italic;
+  color: var(--secondary-text-color);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.education-item p:last-child {
+  margin-bottom: 0;
+}

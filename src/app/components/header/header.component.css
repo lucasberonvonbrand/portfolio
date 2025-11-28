@@ -1,0 +1,124 @@
+header {
+  background-color: var(--card-background-color);
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea si no hay espacio */
+  gap: 10px;
+}
+
+nav a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: var(--secondary-text-color);
+  transition: color 0.3s ease;
+  display: inline-block;
+  position: relative; /* Necesario para posicionar el tooltip */
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilos para el Tooltip */
+nav a::after {
+  content: attr(aria-label); /* Usamos el texto del aria-label para el tooltip */
+  position: absolute;
+  top: 150%; /* Posiciona el tooltip debajo del icono */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--text-color);
+  color: var(--background-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  pointer-events: none; /* Para que no interfiera con el hover del icono */
+  z-index: 1; /* Asegura que el tooltip esté sobre otros elementos si es necesario */
+}
+
+/* Muestra el tooltip al pasar el mouse */
+nav a:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Colores específicos para cada icono */
+nav a[aria-label="GitHub"] .icon {
+  color: #181717; /* Color oficial de GitHub */
+}
+
+nav a[aria-label="LinkedIn"] .icon {
+  color: #0A66C2; /* Color oficial de LinkedIn */
+}
+
+/* Efecto hover general para los enlaces */
+nav a:hover {
+  transform: scale(1.1);
+}
+
+/* El icono del CV y su tooltip usarán el color primario del tema */
+nav a[aria-label="Descargar CV"]:hover {
+  color: var(--primary-color);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+.separator {
+  display: inline-block;
+  width: 1px;
+  height: 24px;
+  background-color: var(--border-color);
+  margin: 0 10px;
+  align-self: center; /* Asegura que el separador se centre verticalmente con los iconos */
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .nav-links a {
+    margin-left: 10px; /* Reduce el margen en pantallas pequeñas */
+  }
+}
