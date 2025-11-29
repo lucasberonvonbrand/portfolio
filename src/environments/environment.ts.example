@@ -1,0 +1,7 @@
+export const environment = {
+  production: false,
+  emailjs_service_id: 'TU_SERVICE_ID',
+  emailjs_template_id: 'TU_TEMPLATE_ID',
+  emailjs_public_key: 'TU_PUBLIC_KEY'
+};
+

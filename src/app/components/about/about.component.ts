@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { ScrollAnimationDirective } from '../../directives/scroll-animation.directive';
 
 @Component({
   selector: 'app-about',
   standalone: true,
+  imports: [ScrollAnimationDirective],
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
