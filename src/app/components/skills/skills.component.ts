@@ -23,7 +23,7 @@ export class SkillsComponent {
       skills: [
         { name: 'Spring Security', icon: 'springsecurity.svg', description: 'Autenticación y Autorización' },
         { name: 'JWT', icon: 'jwt.svg', description: 'Estándar de Autenticación' },
-        { name: 'OAuth', icon: 'oauth.svg', description: 'Framework de Autorización' },
+        { name: 'OAuth2', icon: 'oauth.svg', description: 'Framework de Autorización' },
         { name: 'Hibernate', icon: 'hibernate.svg', description: 'ORM para Java' },
         { name: 'MySQL', icon: 'mysql.svg', description: 'Base de Datos Relacional' }
       ]

@@ -1,7 +1,7 @@
 .contact-section {
-  padding: 60px 20px;
+  padding: 30px 20px;
   text-align: center;
-  background-color: var(--background-color);
+  background-color: transparent;
 }
 
 .contact-section h2 {
@@ -11,7 +11,7 @@
 
 .subtitle {
   color: var(--secondary-text-color);
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   font-size: 1.1rem;
   max-width: 500px;
   margin-left: auto;
@@ -23,6 +23,12 @@
   gap: 50px;
   max-width: 1100px;
   margin: 0 auto;
+  /* Glassmorphism Style */
+  background: rgba(20, 26, 34, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 40px;
   text-align: left;
 }
 
@@ -51,11 +57,11 @@
 
 .info-item p {
   margin: 0;
-  color: var(--secondary-text-color);
+  color: var(--text-color);
 }
 
 .info-item a {
-  color: var(--secondary-text-color);
+  color: var(--text-color);
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -82,11 +88,11 @@
 
 /* Colores específicos para cada icono */
 .social-icon[aria-label="GitHub"] .icon {
-  color: #181717; /* Color oficial de GitHub */
+  color: var(--text-color);
 }
 
 .social-icon[aria-label="LinkedIn"] .icon {
-  color: #0A66C2; /* Color oficial de LinkedIn */
+  color: var(--text-color);
 }
 
 .social-icon .icon {
@@ -114,13 +120,14 @@
 .form-group textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   border-radius: 5px;
   font-family: inherit;
   font-size: 1rem;
   box-sizing: border-box; /* Important for padding and width */
   transition: border-color 0.3s, box-shadow 0.3s;
-  background-color: #fdfdfd;
+  background-color: #0d1117;
+  color: var(--text-color);
   resize: none;
 }
 
@@ -128,7 +135,7 @@
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(109, 179, 63, 0.25);
+  box-shadow: 0 0 0 3px rgba(126, 231, 135, 0.3);
 }
 
 .submit-btn {
@@ -167,14 +174,14 @@
 }
 
 .submission-feedback.success {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
+  background-color: rgba(46, 160, 67, 0.2);
+  color: #7ee787;
+  border: 1px solid #30363d;
 }
 .submission-feedback.error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
+  background-color: rgba(248, 81, 73, 0.2);
+  color: #f85149;
+  border: 1px solid #30363d;
 }
 
 @media (max-width: 768px) {

@@ -1,9 +1,9 @@
 footer {
   text-align: center;
   padding: 20px 40px;
-  background-color: var(--text-color);
-  color: var(--background-color);
-  margin-top: 40px;
+  background-color: #0d1117;
+  color: var(--secondary-text-color);
+  margin-top: 0;
 }
 
 .footer-content {
@@ -24,7 +24,7 @@ footer p {
 }
 
 .back-to-top {
-  color: var(--background-color);
+  color: var(--secondary-text-color);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;

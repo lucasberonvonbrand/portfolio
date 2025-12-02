@@ -1,13 +1,12 @@
 .skills-section {
-  padding: 60px 20px;
+  padding: 40px 20px;
   text-align: center;
-  background-color: var(--section-background-color);
+  background-color: transparent;
 }
 
 .skill-category {
   margin-bottom: 50px;
   text-align: center;
-  background-color: var(--section-background-color);
 }
 
 .skills-section h2 {
@@ -17,60 +16,64 @@
 
 .category-title {
   font-size: 1.8rem;
-  color: var(--primary-color);
+  color: var(--text-color);
   margin-bottom: 30px;
-  border-bottom: 2px solid var(--border-color);
+  position: relative;
   padding-bottom: 10px;
   display: inline-block;
+}
+
+.category-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
 }
 
 .skills-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 15px;
   max-width: 1000px;
   margin: 0 auto;
 }
 
 .skill-tag {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background-color: var(--card-background-color);
+  gap: 10px;
+  /* Glassmorphism Style */
+  background: rgba(20, 26, 34, 0.6);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 20px;
-  width: 150px;
-  height: 150px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px var(--shadow-color);
-  cursor: default;
-}
-
-.skill-tag:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px var(--shadow-color);
-}
-
-.skill-icon-wrapper {
-  color: var(--primary-color);
+  border-radius: 25px; /* Hace que las etiquetas sean redondeadas */
+  padding: 8px 15px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .skill-name {
   font-weight: 600;
-  margin-top: 10px;
   color: var(--text-color);
 }
 
-.skill-description {
-  font-size: 0.85rem;
-  color: var(--secondary-text-color);
-  margin-top: 5px;
+.skill-tag:hover {
+  transform: translateY(-3px);
+  background-color: var(--border-color);
+  color: var(--text-color);
 }
 
 .skill-icon {
-  width: 48px;
-  height: 48px;
+  width: 24px;
+  height: 24px;
+}
+
+/* Filtro para invertir el color del logo de GitHub y hacerlo visible en el tema oscuro */
+.skill-icon[src*="github.svg"] {
+  filter: invert(1);
 }

@@ -3,7 +3,8 @@
 }
 
 header {
-  background-color: var(--card-background-color);
+  background: rgba(13, 17, 23, 0.7); /* Darker glass for header */
+  backdrop-filter: blur(10px);
   padding: 15px 40px;
   display: flex;
   justify-content: space-between;
@@ -12,14 +13,16 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
   transition: box-shadow 0.3s ease-in-out;
 }
 
 .logo {
   font-size: 1.5em;
-  font-weight: bold;
-  color: var(--text-color);
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--primary-color);
 }
 
 nav {
@@ -33,7 +36,7 @@ nav {
 nav a {
   margin-left: 15px;
   text-decoration: none;
-  color: var(--secondary-text-color);
+  color: var(--text-color);
   transition: color 0.3s ease;
   display: inline-block;
   position: relative; /* Necesario para posicionar el tooltip */
@@ -57,8 +60,8 @@ nav a::after {
   top: 150%; /* Posiciona el tooltip debajo del icono */
   left: 50%;
   transform: translateX(-50%);
-  background-color: var(--text-color);
-  color: var(--background-color);
+  background-color: #21262d;
+  color: var(--text-color);
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 0.85rem;
@@ -78,16 +81,19 @@ nav a:hover::after {
 
 /* Colores específicos para cada icono */
 nav a[aria-label="GitHub"] .icon {
-  color: #181717; /* Color oficial de GitHub */
+  color: var(--text-color); /* Use theme color */
 }
 
 nav a[aria-label="LinkedIn"] .icon {
-  color: #0A66C2; /* Color oficial de LinkedIn */
+  color: var(--text-color); /* Use theme color */
 }
 
 /* Efecto hover general para los enlaces */
-nav a:hover {
+nav a:hover,
+nav a[aria-label="GitHub"]:hover .icon,
+nav a[aria-label="LinkedIn"]:hover .icon {
   transform: scale(1.1);
+  color: var(--primary-color);
 }
 
 /* El icono del CV y su tooltip usarán el color primario del tema */

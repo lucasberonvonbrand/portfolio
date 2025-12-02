@@ -1,6 +1,6 @@
 .projects-section {
-  padding: 60px 0;
-  background-color: var(--background-color);
+  padding: 30px 0;
+  background-color: transparent;
 }
 
 h2 {
@@ -16,19 +16,21 @@ h2 {
 }
 
 .project-card {
+  /* Glassmorphism Style */
+  background: rgba(20, 26, 34, 0.6);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 25px;
-  background-color: var(--card-background-color);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 6px var(--shadow-color);
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.3);
 }
 
 .project-card h3 {
@@ -36,12 +38,33 @@ h2 {
   color: var(--primary-color);
   font-size: 1.4rem;
 }
+.project-card p {
+  color: var(--text-color);
+  flex-grow: 1;
+}
+
 
 .project-card ul {
-  padding-left: 20px;
+  list-style-type: none; /* Quitamos los puntos por defecto */
+  padding-left: 0;
   flex-grow: 1; /* Pushes the button to the bottom */
-  color: var(--secondary-text-color);
+  color: var(--text-color);
   margin-bottom: 20px;
+}
+
+.project-card li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px; /* Espacio entre el icono y el texto */
+  margin-bottom: 8px;
+}
+
+.list-icon {
+  width: 18px;
+  height: 18px;
+  fill: var(--primary-color);
+  flex-shrink: 0; /* Evita que el icono se encoja */
+  margin-top: 3px; /* Alineación vertical con el texto */
 }
 
 .technologies {
@@ -52,28 +75,22 @@ h2 {
 }
 
 .tech-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background-color: #e9ecef;
-  color: var(--secondary-text-color);
+  background-color: var(--border-color);
+  color: var(--text-color);
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 0.8rem;
   font-weight: 500;
 }
 
-.tech-icon {
-  width: 16px;
-  height: 16px;
-  fill: currentColor;
-}
-
 .github-link {
-  display: inline-block;
+  display: inline-flex; /* Para alinear el icono y el texto */
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   margin-top: auto; /* Aligns button to the bottom */
   padding: 10px 15px;
-  background-color: var(--primary-color);
+  background-color: var(--border-color);
   color: white;
   text-decoration: none;
   border-radius: 5px;
@@ -83,7 +100,13 @@ h2 {
 }
 
 .github-link:hover {
-  background-color: var(--primary-hover-color);
+  background-color: var(--primary-color);
+}
+
+.github-icon {
+  width: 18px;
+  height: 18px;
+  fill: white; /* Asegura que el logo de GitHub sea siempre blanco */
 }
 
 @media (max-width: 768px) {

@@ -1,31 +1,44 @@
 /* Paleta de Colores y Variables Globales */
 :root {
-  --primary-color: #6DB33F; /* Spring Green */
-  --primary-hover-color: #5a9434; /* Darker Spring Green */
-  --background-color: #f7f9f7; /* Very light green-ish gray */
-  --section-background-color: #ffffff;
-  --card-background-color: #ffffff;
-  --text-color: #2c3e50; /* Dark Slate Gray */
-  --secondary-text-color: #7f8c8d; /* Lighter Slate Gray */
-  --border-color: #e0e6eb;
-  --shadow-color: rgba(44, 62, 80, 0.1); /* Shadow based on text color */
+  /* Dark Theme Palette (GitHub Inspired) */
+  --background-color: #0d1117;
+  --primary-color: #7ee787;
+  --primary-hover-color: #68d072;
+  --text-color: #c9d1d9;
+  --secondary-text-color: #8b949e;
+  --border-color: #30363d;
+
+  /* Glassmorphism & Shadows */
+  --card-background-color: rgba(30, 36, 45, 0.5); /* Semi-transparent dark */
+  --shadow-color: rgba(0, 0, 0, 0.2);
+
+  /* Deprecated, kept for compatibility if needed */
+  --section-background-color: transparent;
 }
 
 /* Estilos Globales del Body */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Constellation Background Effect */
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+  background-attachment: fixed; /* Keeps the background static on scroll */
 }
 
 /* Contenedor Principal */
 .main-content {
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 40px auto 0 auto; /* Añadimos un margen superior para separar del header */
   padding: 0 20px;
 }
 
@@ -36,13 +49,15 @@ h1, h2, h3, h4 {
 }
 
 section {
-  padding: 60px 0;
-  border-bottom: 1px solid var(--border-color);
-  background-color: var(--section-background-color);
+  padding: 30px 0;
+  /* Remove individual section backgrounds to let the body background show */
+  background-color: transparent;
+  margin-bottom: 0; /* Let padding handle the spacing */
 }
 
-section:nth-of-type(even) {
-  background-color: var(--background-color);
+/* Remove the alternating background color */
+section:nth-of-type(even), section:last-of-type {
+  background-color: transparent;
 }
 
 /* --- Media Queries para Diseño Responsive --- */
