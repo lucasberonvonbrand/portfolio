@@ -23,6 +23,12 @@ header {
   font-weight: 700;
   letter-spacing: 0.5px;
   color: var(--primary-color);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+  opacity: 0.8;
 }
 
 nav {
