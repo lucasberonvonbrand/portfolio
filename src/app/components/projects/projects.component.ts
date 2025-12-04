@@ -23,6 +23,7 @@ export class ProjectsComponent {
         'Manejo centralizado de excepciones y uso del patrón DTO con MapStruct para una API robusta y desacoplada.'
       ],
       technologies: ['Java', 'Spring Boot', 'Spring Security', 'JWT', 'MySQL', 'JPA/Hibernate', 'Maven', 'Weka', 'Google Gemini'],
+      featured: true,
       githubUrl: 'https://github.com/lucasberonvonbrand/investor-platform-backend'
     },
     {

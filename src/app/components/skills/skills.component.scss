@@ -48,11 +48,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  /* Glassmorphism Style */
   background: rgba(20, 26, 34, 0.6);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-color);
-  border-radius: 25px; /* Hace que las etiquetas sean redondeadas */
+  border-radius: 25px;
   padding: 8px 15px;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
@@ -73,7 +72,6 @@
   height: 24px;
 }
 
-/* Filtro para invertir el color del logo de GitHub y hacerlo visible en el tema oscuro */
 .skill-icon[src*="github.svg"] {
   filter: invert(1);
 }

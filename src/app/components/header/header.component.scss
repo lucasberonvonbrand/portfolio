@@ -3,7 +3,7 @@
 }
 
 header {
-  background: rgba(13, 17, 23, 0.7); /* Darker glass for header */
+  background: rgba(13, 17, 23, 0.7);
   backdrop-filter: blur(10px);
   padding: 15px 40px;
   display: flex;
@@ -35,7 +35,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea si no hay espacio */
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -44,8 +44,7 @@ nav a {
   text-decoration: none;
   color: var(--text-color);
   transition: color 0.3s ease;
-  display: inline-block;
-  position: relative; /* Necesario para posicionar el tooltip */
+  display: inline-block;  position: relative;
 }
 
 .nav-links {
@@ -59,11 +58,10 @@ nav a {
   align-items: center;
 }
 
-/* Estilos para el Tooltip */
 nav a::after {
-  content: attr(aria-label); /* Usamos el texto del aria-label para el tooltip */
+  content: attr(aria-label);
   position: absolute;
-  top: 150%; /* Posiciona el tooltip debajo del icono */
+  top: 150%;
   left: 50%;
   transform: translateX(-50%);
   background-color: #21262d;
@@ -71,30 +69,27 @@ nav a::after {
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 0.85rem;
-  white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+  white-space: nowrap;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
-  pointer-events: none; /* Para que no interfiera con el hover del icono */
-  z-index: 1; /* Asegura que el tooltip esté sobre otros elementos si es necesario */
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* Muestra el tooltip al pasar el mouse */
 nav a:hover::after {
   opacity: 1;
   visibility: visible;
 }
 
-/* Colores específicos para cada icono */
 nav a[aria-label="GitHub"] .icon {
-  color: var(--text-color); /* Use theme color */
+  color: var(--text-color);
 }
 
 nav a[aria-label="LinkedIn"] .icon {
-  color: var(--text-color); /* Use theme color */
+  color: var(--text-color);
 }
 
-/* Efecto hover general para los enlaces */
 nav a:hover,
 nav a[aria-label="GitHub"]:hover .icon,
 nav a[aria-label="LinkedIn"]:hover .icon {
@@ -102,7 +97,6 @@ nav a[aria-label="LinkedIn"]:hover .icon {
   color: var(--primary-color);
 }
 
-/* El icono del CV y su tooltip usarán el color primario del tema */
 nav a[aria-label="Descargar CV"]:hover {
   color: var(--primary-color);
 }
@@ -119,8 +113,7 @@ nav a[aria-label="Descargar CV"]:hover {
   width: 1px;
   height: 24px;
   background-color: var(--border-color);
-  margin: 0 10px;
-  align-self: center; /* Asegura que el separador se centre verticalmente con los iconos */
+  margin: 0 10px;  align-self: center;
 }
 
 @media (max-width: 768px) {
@@ -135,6 +128,6 @@ nav a[aria-label="Descargar CV"]:hover {
   }
 
   .nav-links a {
-    margin-left: 10px; /* Reduce el margen en pantallas pequeñas */
+    margin-left: 10px;
   }
 }

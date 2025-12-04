@@ -12,7 +12,6 @@
 }
 
 .about-container {
-  /* Glassmorphism Style */
   background: rgba(20, 26, 34, 0.6);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-color);
@@ -23,10 +22,9 @@
   line-height: 1.7;
   color: var(--text-color);
   font-size: 1.1rem;
-  text-align: left; /* Alineamos el texto a la izquierda para mejor legibilidad */
+  text-align: left;
 }
 
-/* Estilos para la animación */
 .animated-section {
   opacity: 0;
   transform: translateY(30px);

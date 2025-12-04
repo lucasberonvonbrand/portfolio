@@ -35,7 +35,7 @@ export class ContactComponent {
 
   async onSubmit() {
     if (this.contactForm.invalid) {
-      this.contactForm.markAllAsTouched(); // Marca todos los campos para mostrar errores
+      this.contactForm.markAllAsTouched();
       return;
     }
 
@@ -53,22 +53,21 @@ export class ContactComponent {
       this.submissionStatus = 'success';
       this.contactForm.reset();
 
-      // Ocultar el mensaje de éxito después de 5 segundos
       setTimeout(() => {
         this.submissionStatus = null;
-        this.cdr.detectChanges(); // Aseguramos que la vista se actualice
+        this.cdr.detectChanges();
       }, 5000);
     } catch (error) {
       console.error('Error al enviar el email:', error);
       this.submissionStatus = 'error';
-      // Opcional: Ocultar también el mensaje de error después de un tiempo
+
       setTimeout(() => {
         this.submissionStatus = null;
         this.cdr.detectChanges();
       }, 7000);
     } finally {
       this.isSubmitting = false;
-      this.cdr.detectChanges(); // Forzar la detección de cambios
+      this.cdr.detectChanges();
     }
   }
 }

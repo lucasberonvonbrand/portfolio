@@ -13,14 +13,14 @@ export class ScrollAnimationDirective implements OnInit, OnDestroy {
     const options = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.1, // La animación se dispara cuando el 10% del elemento es visible
+      threshold: 0.1,
     };
 
     this.observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          this.observer?.unobserve(entry.target); // Dejamos de observar una vez que es visible
+          this.observer?.unobserve(entry.target);
         }
       });
     }, options);

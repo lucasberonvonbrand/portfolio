@@ -4,10 +4,8 @@
   justify-content: center;
   gap: 50px;
   padding: 50px 40px;
-  /* Glassmorphism Style */
   background: rgba(20, 26, 34, 0.6);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
+  backdrop-filter: blur(10px);  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   animation: fadeIn 1s ease-in-out;
 }
@@ -16,8 +14,7 @@
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 0 50px rgba(126, 231, 135, 0.3); /* Softer, more diffused glow */
+  overflow: hidden;  box-shadow: 0 0 50px rgba(126, 231, 135, 0.3);
   border: 3px solid var(--border-color);
   flex-shrink: 0;
 }
@@ -50,7 +47,7 @@
 .hero-text .summary {
   font-size: 1.1rem;
   color: var(--text-color);
-  max-width: 800px; /* Aumentado para dar más espacio al texto */
+  max-width: 800px;
   margin: 0 auto;
   line-height: 1.6;
 }
@@ -70,7 +67,7 @@
   .hero-photo {
     width: 170px;
     height: 170px;
-    margin-bottom: 20px; /* Añade espacio entre la foto y el texto */
+    margin-bottom: 20px;
   }
 
   .hero-text h1 {

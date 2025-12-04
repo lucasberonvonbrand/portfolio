@@ -11,10 +11,9 @@
 
 .education-item-container {
   display: flex;
-  align-items: center; /* Centra verticalmente el logo con el texto */
-  max-width: 850px; /* Aumenta el ancho máximo para más espacio */
+  align-items: center;
+  max-width: 850px;
   margin: 0 auto 30px auto;
-  /* Glassmorphism Style */
   background: rgba(20, 26, 34, 0.6);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-color);
@@ -25,19 +24,16 @@
 }
 
 .education-logo {
-  width: 100px; /* Aumenta el tamaño del logo */
+  width: 100px;
   height: auto;
   margin-right: 20px;
 }
 
-/* Filtro para invertir el color de logos oscuros y hacerlos visibles en el tema oscuro */
 .education-logo[src*="unlam.webp"] {
   filter: invert(1);
 }
 
 .education-item {
-  /* Los estilos de la tarjeta se movieron a .education-item-container */
-  /* Este contenedor ahora solo organiza el texto */
   flex: 1;
 }
 
@@ -48,7 +44,7 @@
 
 .education-item h3 {
   margin-top: 0;
-  margin-bottom: 15px; /* Espaciado uniforme */
+  margin-bottom: 15px;
   color: var(--text-color);
   font-size: 1.4rem;
 }
@@ -56,8 +52,8 @@
 .education-item .institution {
   font-style: italic;
   color: var(--secondary-text-color);
-  margin-top: 0; /* Eliminamos margen superior por defecto */
-  margin-bottom: 15px; /* Espaciado uniforme */
+  margin-top: 0;
+  margin-bottom: 15px;
   font-weight: 500;
 }
 
@@ -65,22 +61,20 @@
   margin-bottom: 0;
 }
 
-/* --- Responsive Design --- */
 @media (max-width: 768px) {
   .education-item-container {
-    flex-direction: column; /* Apila el logo y el texto verticalmente */
-    align-items: center; /* Centra los elementos */
+    flex-direction: column;
+    align-items: center;
     text-align: center;
   }
 
   .education-logo {
-    margin-right: 0; /* Quita el margen derecho */
-    margin-bottom: 20px; /* Añade espacio debajo del logo */
-    width: 80px; /* Puedes ajustar el tamaño del logo para móviles si es necesario */
+    margin-right: 0;
+    margin-bottom: 20px;
+    width: 80px;
   }
 }
 
-/* Estilos para la animación */
 .animated-section {
   opacity: 0;
   transform: translateY(30px);
