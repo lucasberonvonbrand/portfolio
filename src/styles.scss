@@ -1,15 +1,15 @@
 /* Paleta de Colores y Variables Globales */
 :root {
-  /* Dark Theme Palette (GitHub Inspired) */
-  --background-color: #0d1117;
-  --primary-color: #7ee787;
-  --primary-hover-color: #68d072;
-  --text-color: #c9d1d9;
-  --secondary-text-color: #8b949e;
-  --border-color: #30363d;
+  /* Light Theme Palette (Blue & White) */
+  --background-color: #ffffff;
+  --primary-color: #2563eb; /* Azul cobalto moderno */
+  --primary-hover-color: #1d4ed8;
+  --text-color: #111827; /* Gris muy oscuro para el texto */
+  --secondary-text-color: #4b5563; /* Gris medio */
+  --border-color: #e5e7eb;
 
   /* Glassmorphism & Shadows */
-  --card-background-color: rgba(30, 36, 45, 0.5); /* Semi-transparent dark */
+  --card-background-color: rgba(255, 255, 255, 0.8);
   --shadow-color: rgba(0, 0, 0, 0.2);
 
   /* Deprecated, kept for compatibility if needed */
@@ -28,8 +28,8 @@ body {
 
   /* Constellation Background Effect */
   background-image:
-    radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px);
   background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
   background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
   background-attachment: fixed; /* Keeps the background static on scroll */
@@ -37,9 +37,33 @@ body {
 
 /* Contenedor Principal */
 .main-content {
-  max-width: 1100px;
-  margin: 40px auto 0 auto; /* Añadimos un margen superior para separar del header */
-  padding: 0 20px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.main-content > * {
+  display: block;
+}
+
+.main-content > *:nth-child(even) {
+  background-color: #2563eb; /* Azul cobalto */
+  --text-color: #ffffff; /* Texto principal blanco */
+  --secondary-text-color: #e0e7ff; /* Texto secundario celeste claro */
+  --border-color: rgba(255, 255, 255, 0.2); /* Bordes sutiles blancos */
+  --primary-color: #ffffff; /* Acentos y títulos en blanco */
+  --primary-hover-color: #e0e7ff;
+
+  /* Variables inyectadas para componentes específicos */
+  --card-background-color: #ffffff;
+  --tag-text-color: #2563eb;
+  --tag-hover-bg: #f8fafc;
+  --btn-text-color: #2563eb;
+  --input-focus-shadow: rgba(255, 255, 255, 0.3);
+  --error-text-color: #fca5a5;
+
+  border-top: none;
+  border-bottom: none;
 }
 
 /* Estilos para Títulos y Secciones */
@@ -49,14 +73,9 @@ h1, h2, h3, h4 {
 }
 
 section {
-  padding: 30px 0;
-  /* Remove individual section backgrounds to let the body background show */
-  background-color: transparent;
-  margin-bottom: 0; /* Let padding handle the spacing */
-}
-
-/* Remove the alternating background color */
-section:nth-of-type(even), section:last-of-type {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
   background-color: transparent;
 }
 
@@ -70,6 +89,6 @@ section:nth-of-type(even), section:last-of-type {
   h2 { font-size: 2rem; }
 
   section {
-    padding: 40px 0;
+    padding: 30px 20px;
   }
 }

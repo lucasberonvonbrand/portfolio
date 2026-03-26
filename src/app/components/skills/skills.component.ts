@@ -29,10 +29,22 @@ export class SkillsComponent {
       ]
     },
     {
+      title: 'Testing y Calidad',
+      skills: [
+        { name: 'JUnit', icon: 'junit.svg', description: 'Pruebas Unitarias' },
+        { name: 'Mockito', icon: 'mockito.png', description: 'Mocking' },
+        { name: 'Selenium', icon: 'selenium.svg', description: 'Automatización Web' },
+        { name: 'Cucumber', icon: 'cucumber.svg', description: 'Behavior-Driven Development' },
+        { name: 'JaCoCo', icon: 'jacoco.webp', description: 'Cobertura de Código' },
+        { name: 'SonarQube', icon: 'sonarqube.svg', description: 'Calidad Continua' }
+      ]
+    },
+    {
       title: 'Herramientas',
       skills: [
         { name: 'Git', icon: 'git.svg', description: 'Control de Versiones' },
         { name: 'GitHub', icon: 'github.svg', description: 'Plataforma de Desarrollo' },
+        { name: 'GitHub Actions', icon: 'github-actions.svg', description: 'CI/CD' },
         { name: 'Postman', icon: 'postman.svg', description: 'Plataforma para APIs' },
         { name: 'Maven', icon: 'maven.svg', description: 'Gestión de Dependencias' },
         { name: 'IntelliJ IDEA', icon: 'intellij.svg', description: 'IDE de Desarrollo' }

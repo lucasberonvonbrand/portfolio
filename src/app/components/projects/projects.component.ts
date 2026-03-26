@@ -20,9 +20,10 @@ export class ProjectsComponent {
         'Uso de IA generativa (Google Gemini) para la categorización automática de proyectos y un chatbot de soporte.',
         'Desarrollo de lógica de negocio compleja, incluyendo flujos de financiación, negociación de contratos y gestión multi-moneda.',
         'Implementación de tareas programadas (@Scheduled) para la gestión automática del ciclo de vida de los proyectos.',
-        'Manejo centralizado de excepciones y uso del patrón DTO con MapStruct para una API robusta y desacoplada.'
+        'Manejo centralizado de excepciones y uso del patrón DTO con MapStruct para una API robusta y desacoplada.',
+        'Verificación de la calidad del software mediante el diseño y ejecución de tests unitarios y de integración con JUnit, Mockito y MockMvc.'
       ],
-      technologies: ['Java', 'Spring Boot', 'Spring Security', 'JWT', 'MySQL', 'JPA/Hibernate', 'Maven', 'Weka', 'Google Gemini'],
+      technologies: ['Java', 'Spring Boot', 'Spring Security', 'JWT', 'MySQL', 'JPA/Hibernate', 'Maven', 'Weka', 'Google Gemini', 'JUnit', 'Mockito', 'MockMvc'],
       featured: true,
       githubUrl: 'https://github.com/lucasberonvonbrand/investor-platform-backend'
     },

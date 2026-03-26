@@ -1,7 +1,5 @@
 .contact-section {
-  padding: 30px 20px;
   text-align: center;
-  background-color: transparent;
 }
 
 .contact-section h2 {
@@ -23,11 +21,6 @@
   gap: 50px;
   max-width: 1100px;
   margin: 0 auto;
-  background: rgba(20, 26, 34, 0.6);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 40px;
   text-align: left;
 }
 
@@ -116,8 +109,8 @@
   font-size: 1rem;
   box-sizing: border-box;
   transition: border-color 0.3s, box-shadow 0.3s;
-  background-color: #0d1117;
-  color: var(--text-color);
+  background-color: #ffffff;
+  color: #111827; /* Forzamos el texto oscuro al escribir sin importar la sección */
   resize: none;
 }
 
@@ -125,14 +118,14 @@
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(126, 231, 135, 0.3);
+  box-shadow: 0 0 0 3px var(--input-focus-shadow, rgba(37, 99, 235, 0.2));
 }
 
 .submit-btn {
   width: 100%;
   padding: 15px;
   background-color: var(--primary-color);
-  color: white;
+  color: var(--btn-text-color, #ffffff);
   border: none;
   border-radius: 5px;
   font-size: 1.1rem;
@@ -151,7 +144,7 @@
 }
 
 .error-message {
-  color: #dc3545;
+  color: var(--error-text-color, #dc3545);
   font-size: 0.9rem;
   margin-top: 5px;
 }
@@ -164,14 +157,14 @@
 }
 
 .submission-feedback.success {
-  background-color: rgba(46, 160, 67, 0.2);
-  color: #7ee787;
-  border: 1px solid #30363d;
+  background-color: #d1fae5;
+  color: #059669;
+  border: 1px solid #10b981;
 }
 .submission-feedback.error {
-  background-color: rgba(248, 81, 73, 0.2);
-  color: #f85149;
-  border: 1px solid #30363d;
+  background-color: #fee2e2;
+  color: #e11d48;
+  border: 1px solid #f43f5e;
 }
 
 @media (max-width: 768px) {
