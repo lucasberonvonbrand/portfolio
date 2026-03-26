@@ -1,7 +1,5 @@
 .skills-section {
-  padding: 40px 20px;
   text-align: center;
-  background-color: transparent;
 }
 
 .skill-category {
@@ -48,8 +46,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(20, 26, 34, 0.6);
-  backdrop-filter: blur(10px);
+  background: var(--card-background-color, #ffffff);
   border: 1px solid var(--border-color);
   border-radius: 25px;
   padding: 8px 15px;
@@ -58,20 +55,22 @@
 
 .skill-name {
   font-weight: 600;
-  color: var(--text-color);
+  color: var(--tag-text-color, var(--text-color));
 }
 
 .skill-tag:hover {
   transform: translateY(-3px);
-  background-color: var(--border-color);
-  color: var(--text-color);
+  background-color: var(--tag-hover-bg, var(--border-color));
+  color: var(--tag-text-color, var(--text-color));
 }
 
 .skill-icon {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
 }
 
-.skill-icon[src*="github.svg"] {
-  filter: invert(1);
+.skill-icon[src*="jacoco.webp"] {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  padding: 2px;
 }
