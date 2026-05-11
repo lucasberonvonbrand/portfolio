@@ -106,7 +106,11 @@ h2 {
 .github-link:hover, .doc-link:hover {
   background-color: var(--primary-color);
   color: #ffffff;
+<<<<<<< HEAD
   .github-icon, .doc-icon { fill: #ffffff; }
+=======
+  .github-icon { fill: #ffffff; }
+>>>>>>> a632c05521387d6feeeaee2bc7413fc9e9264b5a
 }
 
 .github-icon, .doc-icon {

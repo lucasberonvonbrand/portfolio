@@ -21,9 +21,13 @@ export class ProjectsComponent {
         'Desarrollo de lógica de negocio compleja, incluyendo flujos de financiación, negociación de contratos y gestión multi-moneda.',
         'Implementación de tareas programadas (@Scheduled) para la gestión automática del ciclo de vida de los proyectos.',
         'Manejo centralizado de excepciones y uso del patrón DTO con MapStruct para una API robusta y desacoplada.',
+<<<<<<< HEAD
         'Verificación de la calidad del software mediante el diseño y ejecución de tests unitarios y de integración con JUnit, Mockito y MockMvc.',
         'Responsable de la documentación funcional: relevé y documenté el alcance del sistema (épicas), construí el Visual Story Mapping, el Product Backlog (>35 US y estimación en Story Points) y el Release Planning con sprints.',
         'Redacté los criterios de aceptación en formato BDD para las 9 épicas del sistema y participé en el diseño del plan de pruebas con más de 40 escenarios.'
+=======
+        'Verificación de la calidad del software mediante el diseño y ejecución de tests unitarios y de integración con JUnit, Mockito y MockMvc.'
+>>>>>>> a632c05521387d6feeeaee2bc7413fc9e9264b5a
       ],
       technologies: ['Java', 'Spring Boot', 'Spring Security', 'JWT', 'MySQL', 'JPA/Hibernate', 'Maven', 'Weka', 'Google Gemini', 'JUnit', 'Mockito', 'MockMvc'],
       featured: true,
