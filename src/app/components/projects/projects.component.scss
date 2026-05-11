@@ -81,12 +81,18 @@ h2 {
   font-weight: 500;
 }
 
-.github-link {
+.project-links {
+  display: flex;
+  gap: 15px;
+  margin-top: auto;
+}
+
+.github-link, .doc-link {
+  flex: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-top: auto;
   padding: 10px 15px;
   background-color: #f3f4f6;
   color: var(--text-color);
@@ -97,13 +103,13 @@ h2 {
   font-weight: 600;
 }
 
-.github-link:hover {
+.github-link:hover, .doc-link:hover {
   background-color: var(--primary-color);
   color: #ffffff;
-  .github-icon { fill: #ffffff; }
+  .github-icon, .doc-icon { fill: #ffffff; }
 }
 
-.github-icon {
+.github-icon, .doc-icon {
   width: 18px;
   height: 18px;
   fill: var(--text-color);
@@ -117,5 +123,9 @@ h2 {
 
   .featured-project {
     grid-column: span 1;
+  }
+
+  .project-links {
+    flex-direction: column;
   }
 }
