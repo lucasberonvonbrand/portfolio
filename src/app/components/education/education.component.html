@@ -1,36 +1,34 @@
 <section id="education"
          class="education-section animated-section"
          appScrollAnimation>
-  <h2>Educación y Formación</h2>
+  <h2>Educación y Certificaciones</h2>
 
-  <div class="education-item-container">
-    <img src="assets/unlam.webp" alt="" class="education-logo">
-    <div class="education-item">
-      <h3>Licenciatura en Gestión de Tecnología</h3>
-      <p class="institution">UNLaM, 2023 – 2025</p>
-      <p>Perfil integral que fusiona el desarrollo de software con la visión estratégica de negocio. Profundicé en Arquitectura de Software, aplicando patrones de diseño como MVC y Microservicios. Adquirí sólidas habilidades en Ingeniería de Software y Análisis Funcional para la gestión de proyectos ágiles (Scrum). Esto abarca el relevamiento y documentación de alcance (épicas), creación de Visual Story Mapping, gestión de Product Backlog con estimación en Story Points, Release Planning, redacción de criterios de aceptación en formato BDD y diseño de planes de prueba. Me especialicé en el modelado y diseño de bases de datos relacionales, desde el concepto hasta el modelo físico, y en la implementación de consultas SQL complejas. En Inteligencia de Negocios, abarqué el diseño de Data Warehouses (esquemas de estrella y copo de nieve), el uso de Power BI para visualización y la aplicación de algoritmos de minería de datos (árboles de decisión, clustering, Naive Bayes). Complementé mi perfil con gestión de calidad (normas ISO) y modelado de procesos de negocio (BPM).</p>
+  <!-- Subsección: Formación Académica -->
+  <div class="education-block">
+    <h3 class="subsection-title">Formación Académica</h3>
+    
+    <div *ngFor="let edu of academicEducation" class="education-item-container">
+      <img [src]="edu.logo" [alt]="edu.institution + ' logo'" class="education-logo">
+      <div class="education-item">
+        <h3>{{ edu.degree }}</h3>
+        <p class="institution">{{ edu.institution }}, {{ edu.period }}</p>
+        <p>{{ edu.description }}</p>
+      </div>
     </div>
   </div>
 
-  <div class="education-item-container">
-    <img src="assets/unlz.png" alt="" class="education-logo">
-    <div class="education-item">
-      <h3>Tecnicatura en Programación</h3>
-      <p class="institution">UNLZ, 2020 - 2022</p>
-      <p>Formación técnica con una base sólida en lógica y algoritmos. Profundicé en programación con lenguajes como Java, C# y Python. Adquirí experiencia en el desarrollo de aplicaciones web, utilizando PHP para el backend y frameworks como Bootstrap para el diseño de interfaces. El plan de estudios cubrió también áreas clave como Seguridad Informática y el relevamiento de requisitos de software.</p>
-    </div>
-  </div>
+  <!-- Subsección: Cursos y Certificaciones -->
+  <div class="education-block certifications-block">
+    <h3 class="subsection-title">Cursos y Certificaciones</h3>
 
-  <div class="education-item-container">
-    <img src="assets/todocodeacademy.png" alt="" class="education-logo">
-    <div class="education-item">
-      <h3>Formación Backend con Java</h3>
-      <p class="institution">TodoCode Academy</p>
-      <p>
-        Formación centrada en el desarrollo backend con Java y el ecosistema Spring. Se profundizó en la creación de APIs RESTful con Spring Boot, aplicando la arquitectura multicapa, el patrón DTO y la persistencia de datos con JPA y Hibernate. Se abordó la arquitectura de microservicios utilizando Spring Cloud (Eureka, API Gateway, Resilience4j) y la securización de aplicaciones con Spring Security, gestionando la autenticación y autorización mediante JWT y OAuth2.
-        <br><br>
-        Adicionalmente, la formación integró fuertes prácticas de calidad de software y CI/CD. Esto incluyó el diseño y ejecución de tests unitarios y de integración empleando JUnit, Mockito y MockMvc, así como el análisis de cobertura y calidad continua de código mediante JaCoCo y SonarQube. Finalmente, se implementaron pipelines de integración y despliegue continuo automatizados utilizando GitHub Actions.
-      </p>
+    <div class="certifications-grid">
+      <div *ngFor="let cert of certifications" class="cert-card">
+        <div class="cert-header">
+          <span class="cert-platform">{{ cert.platform }}</span>
+          <span class="cert-year">{{ cert.year }}</span>
+        </div>
+        <h4 class="cert-title">{{ cert.title }}</h4>
+      </div>
     </div>
   </div>
 </section>

@@ -149,6 +149,33 @@ h2 {
   fill: var(--primary-color);
 }
 
+/* Nota de Render Tier Gratuito */
+.render-notice {
+  margin-top: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  background-color: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 6px;
+  font-size: 0.82rem;
+  color: var(--text-color);
+  line-height: 1.4;
+
+  .notice-icon {
+    width: 16px;
+    height: 16px;
+    fill: #f59e0b;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  strong {
+    color: #f59e0b;
+  }
+}
+
 /* Galería de Vista Previa en Tarjeta */
 .project-gallery-preview {
   margin: 15px 0 20px;
