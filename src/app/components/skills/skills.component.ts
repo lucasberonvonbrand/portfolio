@@ -9,64 +9,36 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
 })
 export class SkillsComponent {
-  skillCategories = [
-    {
-      title: 'Frontend',
-      skills: [
-        { name: 'Angular (v19+)', icon: 'angular.svg', description: 'Framework SPA Frontend' },
-        { name: 'React', icon: 'react.svg', description: 'Librería UI' },
-        { name: 'TypeScript', icon: 'typescript.svg', description: 'Superset Tipado' },
-        { name: 'JavaScript', icon: 'javascript.svg', description: 'Lenguaje de Programación' },
-        { name: 'HTML5', icon: 'html5.svg', description: 'Estructuración Web' },
-        { name: 'CSS3', icon: 'css3.svg', description: 'Estilos Web' },
-        { name: 'Tailwind CSS', icon: 'tailwindcss.svg', description: 'Framework CSS' },
-      ],
-    },
-    {
-      title: 'Backend y Cloud',
-      skills: [
-        { name: 'Java (v17/21)', icon: 'java.svg', description: 'Lenguaje de Programación' },
-        { name: 'Spring Boot 3', icon: 'springboot.svg', description: 'Framework Backend' },
-        { name: 'Spring Cloud', icon: 'springcloud.svg', description: 'Microservicios' },
-        { name: 'Node.js', icon: 'nodejs.svg', description: 'Entorno de Ejecución' },
-        { name: 'Docker', icon: 'docker.svg', description: 'Contenerización' },
-      ],
-    },
-    {
-      title: 'Seguridad y Datos',
-      skills: [
-        {
-          name: 'Spring Security',
-          icon: 'springsecurity.svg',
-          description: 'Autenticación y Autorización',
-        },
-        { name: 'JWT', icon: 'jwt.svg', description: 'Tokens Stateless' },
-        { name: 'OAuth2', icon: 'oauth.svg', description: 'Autorización Delegada' },
-        { name: 'Hibernate / JPA', icon: 'hibernate.svg', description: 'ORM para Java' },
-        { name: 'MySQL', icon: 'mysql.svg', description: 'Base de Datos Relacional' },
-        { name: 'MongoDB', icon: 'mongodb.svg', description: 'Base de Datos NoSQL' },
-      ],
-    },
-    {
-      title: 'Testing y DevOps',
-      skills: [
-        { name: 'JUnit 5', icon: 'junit.svg', description: 'Pruebas Unitarias' },
-        { name: 'Mockito', icon: 'mockito.png', description: 'Mocking' },
-        { name: 'SonarQube', icon: 'sonarqube.svg', description: 'Calidad Continua' },
-        { name: 'GitHub Actions', icon: 'github-actions.svg', description: 'Pipelines CI/CD' },
-      ],
-    },
-    {
-      title: 'Herramientas',
-      skills: [
-        { name: 'Git', icon: 'git.svg', description: 'Control de Versiones' },
-        { name: 'GitHub', icon: 'github.svg', description: 'Plataforma de Desarrollo' },
-        { name: 'Postman', icon: 'postman.svg', description: 'Plataforma para APIs' },
-        { name: 'Maven', icon: 'maven.svg', description: 'Gestión de Dependencias' },
-        { name: 'IntelliJ IDEA', icon: 'intellij.svg', description: 'IDE de Desarrollo' },
-        { name: 'Google Antigravity', icon: 'google-antigravity.svg', description: 'Agente de IA' },
-        { name: 'Kiro', icon: 'kiro.svg', description: 'IDE & Asistente IA' },
-      ],
-    },
+  skillsRow1 = [
+    { name: 'Java 21', icon: 'java.svg' },
+    { name: 'Spring Boot 3', icon: 'springboot.svg' },
+    { name: 'TypeScript', icon: 'typescript.svg' },
+    { name: 'Angular 19', icon: 'angular.svg' },
+    { name: 'JavaScript', icon: 'javascript.svg' },
+    { name: 'React', icon: 'react.svg' },
+    { name: 'Node.js', icon: 'nodejs.svg' },
+    { name: 'Docker', icon: 'docker.svg' },
+    { name: 'HTML5', icon: 'html5.svg' },
+    { name: 'CSS3', icon: 'css3.svg' },
+    { name: 'Tailwind CSS', icon: 'tailwindcss.svg' },
+  ];
+
+  skillsRow2 = [
+    { name: 'Spring Security', icon: 'springsecurity.svg' },
+    { name: 'JWT', icon: 'jwt.svg' },
+    { name: 'OAuth2', icon: 'oauth.svg' },
+    { name: 'Hibernate / JPA', icon: 'hibernate.svg' },
+    { name: 'MySQL', icon: 'mysql.svg' },
+    { name: 'MongoDB', icon: 'mongodb.svg' },
+    { name: 'JUnit 5', icon: 'junit.svg' },
+    { name: 'Mockito', icon: 'mockito.png' },
+    { name: 'SonarQube', icon: 'sonarqube.svg' },
+    { name: 'Git', icon: 'git.svg' },
+    { name: 'GitHub Actions', icon: 'github-actions.svg' },
+    { name: 'Maven', icon: 'maven.svg' },
+    { name: 'Postman', icon: 'postman.svg' },
+    { name: 'IntelliJ IDEA', icon: 'intellij.svg' },
+    { name: 'Google Antigravity', icon: 'google-antigravity.svg' },
+    { name: 'Kiro', icon: 'kiro.svg' },
   ];
 }

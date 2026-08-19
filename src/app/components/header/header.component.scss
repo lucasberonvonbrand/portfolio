@@ -1,130 +1,108 @@
-:root {
-  scroll-behavior: smooth;
-}
-
-header {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  padding: 15px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--border-color);
+.header-container {
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-  transition: box-shadow 0.3s ease-in-out;
+  background-color: var(--header-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--header-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.logo {
-  font-size: 1.5em;
-  font-family: 'Exo 2', sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: var(--primary-color);
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.logo:hover {
-  opacity: 0.8;
-}
-
-nav {
+.header-content {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 14px 24px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 10px;
+  justify-content: space-between;
 }
 
-nav a {
-  margin-left: 15px;
+.brand-logo {
   text-decoration: none;
   color: var(--text-color);
-  transition: color 0.3s ease;
-  display: inline-block;  position: relative;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.02em;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 16px;
+
+  a {
+    text-decoration: none;
+    color: var(--secondary-text-color);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--text-color);
+    }
+  }
 }
 
-.nav-icons {
+/* Selector de Tema Píldora (Estilo Gift Egwuenu) */
+.theme-switcher {
   display: flex;
   align-items: center;
-}
-
-nav a::after {
-  content: attr(aria-label);
-  position: absolute;
-  top: 150%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #ffffff;
+  background-color: var(--pill-bg);
   border: 1px solid var(--border-color);
-  color: var(--text-color);
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.85rem;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
-  pointer-events: none;
-  z-index: 1;
-}
+  border-radius: 20px;
+  padding: 3px;
+  gap: 2px;
 
-nav a:hover::after {
-  opacity: 1;
-  visibility: visible;
-}
+  .theme-btn {
+    background: transparent;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 14px;
+    color: var(--secondary-text-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
 
-nav a[aria-label="GitHub"] .icon {
-  color: var(--text-color);
-}
+    svg {
+      stroke: currentColor;
+    }
 
-nav a[aria-label="LinkedIn"] .icon {
-  color: var(--text-color);
-}
+    &:hover:not(.active) {
+      color: var(--text-color);
+    }
 
-nav a:hover,
-nav a[aria-label="GitHub"]:hover .icon,
-nav a[aria-label="LinkedIn"]:hover .icon {
-  transform: scale(1.1);
-  color: var(--primary-color);
-}
-
-.icon {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
-  vertical-align: middle;
-}
-
-.separator {
-  display: inline-block;
-  width: 1px;
-  height: 24px;
-  background-color: var(--border-color);
-  margin: 0 10px;  align-self: center;
+    &.active {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      box-shadow: 0 1px 4px var(--shadow-color);
+    }
+  }
 }
 
 @media (max-width: 768px) {
-  header {
-    padding: 15px 20px;
-    flex-direction: column;
-    gap: 10px;
+  .header-content {
+    padding: 12px 18px;
   }
 
-  nav {
-    justify-content: center;
+  .nav-links {
+    display: none; /* En pantallas móviles compactas ocultamos links redundantes para mantener el header limpio */
   }
 
-  .nav-links a {
-    margin-left: 10px;
+  .brand-logo {
+    font-size: 0.88rem;
   }
 }

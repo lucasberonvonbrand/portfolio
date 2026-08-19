@@ -1,76 +1,113 @@
 .skills-section {
   text-align: center;
+  padding: 40px 0;
 }
 
-.skill-category {
-  margin-bottom: 50px;
-  text-align: center;
-}
-
-.skills-section h2 {
-  margin-bottom: 40px;
-  font-size: 2.5rem;
-}
-
-.category-title {
-  font-size: 1.8rem;
-  color: var(--text-color);
-  margin-bottom: 30px;
-  position: relative;
-  padding-bottom: 10px;
-  display: inline-block;
-}
-
-.category-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background-color: var(--primary-color);
-  border-radius: 2px;
-}
-
-.skills-container {
+.marquee-wrapper {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  max-width: 1000px;
-  margin: 0 auto;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
 }
 
-.skill-tag {
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+  
+  /* Desvanecido gradual en los bordes */
+  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+
+  /* Pausa del carrusel al pasar el cursor */
+  &:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+.marquee-track {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: var(--card-background-color, #ffffff);
-  border: 1px solid var(--border-color);
-  border-radius: 25px;
-  padding: 8px 15px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  gap: 32px;
+  width: max-content;
+  will-change: transform;
 }
 
-.skill-name {
-  font-weight: 600;
-  color: var(--tag-text-color, var(--text-color));
+.track-left {
+  animation: marquee-left 35s linear infinite;
 }
 
-.skill-tag:hover {
-  transform: translateY(-3px);
-  background-color: var(--tag-hover-bg, var(--border-color));
-  color: var(--tag-text-color, var(--text-color));
+.track-right {
+  animation: marquee-right 38s linear infinite;
 }
 
-.skill-icon {
-  width: 32px;
-  height: 32px;
+/* Iconos de tecnologías independientes (estilo Hiroki Osame) */
+.skill-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), filter 0.25s ease;
+
+  .skill-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    transition: transform 0.25s ease;
+  }
+
+  &:hover {
+    transform: scale(1.25);
+
+    .skill-icon {
+      filter: drop-shadow(0 4px 10px rgba(56, 189, 248, 0.4));
+    }
+  }
 }
 
-.skill-icon[src*="jacoco.webp"] {
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
-  padding: 2px;
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .track-left {
+    animation-duration: 25s;
+  }
+  .track-right {
+    animation-duration: 28s;
+  }
+
+  .marquee-track {
+    gap: 22px;
+  }
+
+  .skill-icon-wrapper {
+    width: 36px;
+    height: 36px;
+
+    .skill-icon {
+      width: 30px;
+      height: 30px;
+    }
+  }
 }

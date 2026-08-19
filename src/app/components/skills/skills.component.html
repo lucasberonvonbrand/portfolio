@@ -1,12 +1,22 @@
 <section id="tecnologias" class="skills-section">
-  <h2>Tecnologías</h2>
+  <h2>Stack & Tecnologías</h2>
 
-  <div *ngFor="let category of skillCategories" class="skill-category">
-    <h3 class="category-title">{{ category.title }}</h3>
-    <div class="skills-container">
-      <div class="skill-tag" *ngFor="let skill of category.skills">
-        <img [src]="'assets/' + skill.icon" [alt]="skill.name + ' logo'" class="skill-icon">
-        <span class="skill-name">{{ skill.name }}</span>
+  <div class="marquee-wrapper">
+    <!-- Marquee Fila 1 (Izquierda a Derecha) -->
+    <div class="marquee-container">
+      <div class="marquee-track track-left">
+        <div class="skill-icon-wrapper" *ngFor="let skill of skillsRow1.concat(skillsRow1)" [attr.title]="skill.name">
+          <img [src]="'assets/' + skill.icon" [alt]="skill.name" class="skill-icon" loading="lazy" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Marquee Fila 2 (Derecha a Izquierda) -->
+    <div class="marquee-container">
+      <div class="marquee-track track-right">
+        <div class="skill-icon-wrapper" *ngFor="let skill of skillsRow2.concat(skillsRow2)" [attr.title]="skill.name">
+          <img [src]="'assets/' + skill.icon" [alt]="skill.name" class="skill-icon" loading="lazy" />
+        </div>
       </div>
     </div>
   </div>

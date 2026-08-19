@@ -8,7 +8,7 @@
     <h3 class="subsection-title">Formación Académica</h3>
     
     <div *ngFor="let edu of academicEducation" class="education-item-container">
-      <img [src]="edu.logo" [alt]="edu.institution + ' logo'" class="education-logo">
+      <img [src]="getLogo(edu)" [alt]="edu.institution + ' logo'" class="education-logo">
       <div class="education-item">
         <h3>{{ edu.degree }}</h3>
         <p class="institution">{{ edu.institution }}, {{ edu.period }}</p>
