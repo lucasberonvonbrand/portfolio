@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ProjectsService, Project } from '../../services/projects.service';
@@ -11,6 +11,8 @@ import { ProjectsService, Project } from '../../services/projects.service';
   styleUrls: ['./project-detail.component.scss'],
 })
 export class ProjectDetailComponent implements OnInit {
+  @ViewChild('carouselTrack') carouselTrack!: ElementRef<HTMLDivElement>;
+
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   projectsService = inject(ProjectsService);
@@ -35,6 +37,17 @@ export class ProjectDetailComponent implements OnInit {
 
   getTechIcon(tech: string): string | null {
     return this.projectsService.getTechIcon(tech);
+  }
+
+  scrollCarousel(direction: 'left' | 'right'): void {
+    if (this.carouselTrack && this.carouselTrack.nativeElement) {
+      const track = this.carouselTrack.nativeElement;
+      const scrollAmount = 340;
+      track.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
+    }
   }
 
   openGallery(images: { url: string; caption: string }[], index: number = 0): void {

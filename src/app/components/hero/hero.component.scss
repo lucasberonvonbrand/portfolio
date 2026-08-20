@@ -96,19 +96,24 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 7px 16px;
+  padding: 8px 18px;
   background-color: var(--pill-bg);
   border: 1px solid var(--border-color);
   border-radius: 20px;
   color: var(--secondary-text-color);
   text-decoration: none;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
   transition: all 0.25s ease;
 
   svg {
-    stroke: var(--secondary-text-color);
-    transition: stroke 0.25s ease;
+    color: var(--secondary-text-color);
+    fill: currentColor;
+    stroke: currentColor;
+    transition: color 0.25s ease, fill 0.25s ease, stroke 0.25s ease;
+    flex-shrink: 0;
   }
 
   &:hover {
@@ -118,18 +123,25 @@
     transform: translateY(-1px);
 
     svg {
-      stroke: var(--primary-color);
+      color: var(--primary-color);
+      fill: currentColor;
+      stroke: currentColor;
     }
   }
-}
 
-.cv-pill {
-  background-color: rgba(56, 189, 248, 0.06);
-  border-color: rgba(56, 189, 248, 0.2);
-  color: var(--primary-color);
+  &.cv-pill {
+    svg {
+      fill: none !important;
+      stroke: currentColor;
+    }
 
-  svg {
-    stroke: var(--primary-color);
+    &:hover {
+      svg {
+        fill: none !important;
+        stroke: var(--primary-color);
+        transform: translateY(2px);
+      }
+    }
   }
 }
 

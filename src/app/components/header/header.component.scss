@@ -40,17 +40,43 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
 
   a {
+    position: relative;
     text-decoration: none;
     color: var(--secondary-text-color);
     font-size: 0.85rem;
     font-weight: 500;
-    transition: color 0.2s ease;
+    padding-bottom: 4px;
+    transition: color 0.25s ease;
+
+    /* Línea de subrayado celeste activo (Estilo craftzdog / Vercel) */
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary-color);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
     &:hover {
       color: var(--text-color);
+    }
+
+    &.active {
+      color: var(--primary-color);
+      font-weight: 600;
+
+      &::after {
+        transform: scaleX(1);
+      }
     }
   }
 }

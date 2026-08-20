@@ -1,5 +1,6 @@
 .projects-section {
-  padding: 40px 0;
+  padding: 50px 0 40px 0;
+  scroll-margin-top: 80px !important;
 }
 
 .section-header {
@@ -19,11 +20,23 @@
   }
 }
 
-/* Grilla Minimalista de 2 Columnas (Estilo Takuya Matsuyama) */
+/* Grilla Minimalista de 2 Columnas (Estilo Takuya Matsuyama + Hover Dimming Focus Effect) */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px 22px;
+
+  /* Atenuar ÚNICAMENTE las tarjetas inactivas (:not(:hover)) cuando se pasa sobre alguna */
+  &:has(.project-card:hover) .project-card:not(:hover) {
+    opacity: 0.35;
+    filter: grayscale(30%);
+  }
+
+  /* La tarjeta activa en hover permanece al 100% destacada */
+  .project-card:hover {
+    opacity: 1 !important;
+    filter: none !important;
+  }
 }
 
 .project-card {
@@ -32,7 +45,7 @@
   cursor: pointer;
   border-radius: 16px;
   background-color: transparent;
-  transition: transform 0.25s ease;
+  transition: opacity 0.3s ease, filter 0.3s ease, transform 0.25s ease;
 
   .card-thumbnail {
     width: 100%;
@@ -109,6 +122,12 @@
     height: 18px;
     object-fit: contain;
     filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+    transition: transform 0.25s ease, filter 0.25s ease;
+
+    &:hover {
+      transform: scale(1.35);
+      filter: drop-shadow(0 3px 8px rgba(56, 189, 248, 0.5));
+    }
   }
 
   &:hover {

@@ -30,6 +30,11 @@
   --pill-hover-bg: rgba(2, 132, 199, 0.08);
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
 /* Estilos Globales del Body - Tipografía estilo Gift Egwuenu / Vercel */
 html, body {
   margin: 0;
@@ -51,17 +56,30 @@ html, body {
   padding: 0;
 }
 
-section {
+section,
+section[id],
+app-home > *,
+.projects-section,
+.about-section,
+.skills-section,
+.education-section,
+.contact-section {
   max-width: 820px;
   margin: 0 auto;
   padding: 50px 24px;
   background-color: transparent;
   transition: border-color 0.3s ease;
+  scroll-margin-top: 80px !important;
 }
 
-/* Separador elegante fino entre secciones */
+/* Separador elegante fino entre secciones (excluyendo la sección Hero inicial) */
+app-home > * + * section,
 .main-content > * + * section {
   border-top: 1px solid var(--border-color);
+}
+
+.hero-section {
+  border-top: none !important;
 }
 
 /* Tipografía de Títulos y Encabezados */
@@ -79,12 +97,61 @@ h1 {
 
 h2 {
   font-size: 1.8rem;
-  margin-bottom: 25px;
+  margin-top: 0;
+  margin-bottom: 24px;
   position: relative;
 }
 
 button, input, textarea, select {
   font-family: inherit;
+}
+
+/* Iconos Adaptables según Tema (Light / Dark) */
+.github-icon-dark {
+  display: inline-block !important;
+  width: 16px !important;
+  height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  flex-shrink: 0 !important;
+}
+
+.github-icon-light {
+  display: none !important;
+  width: 16px !important;
+  height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  flex-shrink: 0 !important;
+}
+
+[data-theme="dark"] .cv-icon-img {
+  filter: invert(1);
+}
+
+[data-theme="light"] {
+  .github-icon-dark {
+    display: none !important;
+  }
+  .github-icon-light {
+    display: inline-block !important;
+  }
+}
+
+.pill-icon-asset,
+.social-pill img {
+  width: 16px !important;
+  height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.25s ease;
+}
+
+.social-pill:hover .pill-icon-asset,
+.social-pill:hover img {
+  transform: scale(1.12);
 }
 
 /* Media Queries para Diseño Responsive */
