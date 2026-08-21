@@ -1,0 +1,112 @@
+.links-section {
+  text-align: left;
+  padding: 24px 0 12px 0;
+  scroll-margin-top: 80px !important;
+}
+
+.section-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 16px 0;
+  color: var(--text-color);
+  text-decoration: underline;
+  text-decoration-color: var(--heading-underline-color);
+  text-decoration-thickness: 4px;
+  text-underline-offset: 6px;
+  display: inline-block;
+}
+
+/* Lista Vertical de Redes estilo Educación / Cursos */
+.web-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+
+  /* Focus dimming idéntico a Educación y Proyectos */
+  &:has(.web-link-item:hover) .web-link-item:not(:hover) {
+    opacity: 0.35;
+    filter: grayscale(30%);
+  }
+
+  .web-link-item:hover {
+    opacity: 1 !important;
+    filter: none !important;
+  }
+}
+
+.web-link-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease, filter 0.3s ease, background-color 0.25s ease, transform 0.25s ease;
+
+  .link-logo-container {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    .link-icon-img {
+      width: 26px !important;
+      height: 26px !important;
+      max-width: 26px !important;
+      max-height: 26px !important;
+      object-fit: contain !important;
+      transition: transform 0.25s ease;
+    }
+  }
+
+  .link-text-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+
+    .link-platform-name {
+      font-family: 'Inter', 'M PLUS 1p', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text-color);
+      margin: 0;
+      line-height: 1.35;
+      transition: color 0.25s ease;
+    }
+
+    .link-username {
+      font-family: 'Inter', 'M PLUS 1p', sans-serif;
+      font-size: 0.88rem;
+      color: var(--secondary-text-color);
+      margin: 0;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+  }
+
+  &:hover {
+    background-color: var(--pill-bg);
+    transform: translateX(4px);
+
+    .link-icon-img {
+      transform: scale(1.1);
+    }
+
+    .link-platform-name, .link-username {
+      color: var(--primary-color) !important;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .web-link-item {
+    padding: 8px 12px;
+  }
+}

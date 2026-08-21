@@ -45,7 +45,7 @@
   a {
     position: relative;
     text-decoration: none;
-    color: var(--secondary-text-color);
+    color: var(--text-color);
     font-size: 0.85rem;
     font-weight: 500;
     padding-bottom: 4px;
@@ -71,7 +71,7 @@
     }
 
     &.active {
-      color: var(--primary-color);
+      color: var(--text-color);
       font-weight: 600;
 
       &::after {

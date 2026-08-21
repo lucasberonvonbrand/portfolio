@@ -1,22 +1,27 @@
 .projects-section {
-  padding: 50px 0 40px 0;
+  padding: 24px 0 12px 0;
   scroll-margin-top: 80px !important;
 }
 
 .section-header {
-  margin-bottom: 30px;
+  margin-bottom: 18px;
 
   .section-title {
-    font-size: 1.8rem;
+    font-size: 1.45rem;
     font-weight: 700;
+    letter-spacing: -0.01em;
     margin: 0 0 8px 0;
     color: var(--text-color);
+    text-decoration: underline;
+    text-decoration-color: var(--heading-underline-color);
+    text-decoration-thickness: 4px;
+    text-underline-offset: 6px;
   }
 
   .section-subtitle {
     font-size: 0.95rem;
-    color: var(--secondary-text-color);
-    margin: 0;
+    color: var(--text-color);
+    margin: 8px 0 0 0;
   }
 }
 
@@ -100,7 +105,8 @@
 
   .card-description {
     font-size: 0.86rem;
-    color: var(--secondary-text-color);
+    color: var(--text-color);
+    opacity: 0.9;
     margin: 0;
     line-height: 1.5;
     display: -webkit-box;

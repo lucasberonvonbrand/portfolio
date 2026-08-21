@@ -1,19 +1,28 @@
 .about-section {
   text-align: left;
-  scroll-margin-top: 100px;
+  padding: 24px 0 12px 0;
+  scroll-margin-top: 80px;
+
+  h2 {
+    margin: 0 0 16px 0;
+  }
 }
 
 .about-container {
-  line-height: 1.7;
-  color: var(--secondary-text-color);
-  font-size: 1rem;
+  font-family: 'Inter', 'M PLUS 1p', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.75;
+  color: var(--text-color);
+  font-size: 1.02rem;
+  font-weight: 400;
 
   p {
     margin-bottom: 16px;
+    text-indent: 1em;
+    font-weight: 400;
   }
 
-  strong {
-    color: var(--text-color);
+  strong, a {
+    color: var(--primary-color);
     font-weight: 600;
   }
 }

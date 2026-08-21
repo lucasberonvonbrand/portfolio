@@ -1,0 +1,53 @@
+<div class="education-detail-container" *ngIf="education() as edu">
+  <!-- Botón Volver -->
+  <button (click)="goBack()" class="back-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+    </svg>
+    <span>Volver a Educación</span>
+  </button>
+
+  <!-- Encabezado de la Carrera / Institución -->
+  <div class="detail-header">
+    <div class="logo-box">
+      <img [src]="getLogo(edu)" [alt]="edu.institution" class="detail-logo">
+    </div>
+    <div class="header-info">
+      <span class="status-badge">{{ edu.status }}</span>
+      <h1 class="detail-title">{{ edu.degree }}</h1>
+      <p class="institution-name">{{ edu.institution }}</p>
+      <p class="period-location">
+        <span>🗓️ {{ edu.period }}</span>
+        <span>•</span>
+        <span>📍 {{ edu.location }}</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- Resumen General -->
+  <div class="detail-section summary-card">
+    <h2 class="section-heading">Resumen Académico</h2>
+    <p class="summary-text">{{ edu.summary }}</p>
+  </div>
+
+  <!-- Habilidades / Competencias Clave -->
+  <div class="detail-section">
+    <h2 class="section-heading">Competencias Clave Adquiridas</h2>
+    <div class="skills-tags">
+      <span *ngFor="let skill of edu.skills" class="skill-tag">{{ skill }}</span>
+    </div>
+  </div>
+
+  <!-- Módulos y Áreas de Especialización -->
+  <div class="detail-section">
+    <h2 class="section-heading">Áreas de Especialización y Programa de Estudios</h2>
+    <div class="modules-grid">
+      <div *ngFor="let mod of edu.modules" class="module-card">
+        <h3 class="module-title">{{ mod.title }}</h3>
+        <ul class="module-items">
+          <li *ngFor="let item of mod.items">{{ item }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

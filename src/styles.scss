@@ -4,7 +4,7 @@
   --background-color: #121214;
   --primary-color: #38bdf8; /* Azul cielo sutil */
   --primary-hover-color: #0284c7;
-  --text-color: #f4f4f5; /* Blanco mate */
+  --text-color: #ffffff; /* Blanco nítido estilo Takuya */
   --secondary-text-color: #a1a1aa; /* Gris tenue */
   --border-color: rgba(255, 255, 255, 0.08);
   --card-background-color: rgba(255, 255, 255, 0.02);
@@ -13,6 +13,7 @@
   --header-border: rgba(255, 255, 255, 0.08);
   --pill-bg: rgba(255, 255, 255, 0.04);
   --pill-hover-bg: rgba(56, 189, 248, 0.08);
+  --heading-underline-color: var(--primary-color);
 }
 
 [data-theme="light"] {
@@ -28,6 +29,7 @@
   --header-border: rgba(0, 0, 0, 0.08);
   --pill-bg: rgba(0, 0, 0, 0.04);
   --pill-hover-bg: rgba(2, 132, 199, 0.08);
+  --heading-underline-color: var(--primary-color);
 }
 
 html {
@@ -35,18 +37,38 @@ html {
   scroll-padding-top: 100px;
 }
 
-/* Estilos Globales del Body - Tipografía estilo Gift Egwuenu / Vercel */
+/* Encabezados y Titulares (M PLUS Rounded 1c) */
+h1, h2, h3, h4, h5, h6, .section-title {
+  font-family: 'M PLUS Rounded 1c', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Estilos Globales del Body - Tipografía de Cuerpo Estilo Takuya Matsuyama (Inter / M PLUS 1p) */
 html, body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  font-family: 'Inter', 'M PLUS 1p', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.75;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  text-rendering: optimizeLegibility;
   transition: background-color 0.3s ease, color 0.3s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  font-family: 'Inter', 'M PLUS 1p', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.02rem;
+  font-weight: 400; /* Tipografía limpia y nítida idéntica a la imagen de Takuya */
+  line-height: 1.75;
+  color: var(--text-color);
+  margin-top: 0;
+  margin-bottom: 16px;
 }
 
 /* Contenedor Principal Centrado */
@@ -82,24 +104,33 @@ app-home > * + * section,
   border-top: none !important;
 }
 
-/* Tipografía de Títulos y Encabezados */
+/* Tipografía de Títulos y Encabezados - Estilo Takuya Matsuyama (M PLUS Rounded 1c) */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'M PLUS Rounded 1c', 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: var(--text-color);
   font-weight: 700;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
 }
 
 h1 {
   font-size: 2.5rem;
+  font-weight: 700;
   line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
-h2 {
-  font-size: 1.8rem;
+h2, .section-title {
+  font-family: 'M PLUS Rounded 1c', 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700; /* Estilo Takuya Matsuyama Rounded Bold */
+  letter-spacing: -0.01em;
   margin-top: 0;
   margin-bottom: 24px;
   position: relative;
+  text-decoration: underline;
+  text-decoration-color: var(--heading-underline-color);
+  text-decoration-thickness: 4px;
+  text-underline-offset: 6px;
 }
 
 button, input, textarea, select {

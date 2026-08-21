@@ -1,146 +1,237 @@
-.education-section h2 {
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 2.5rem;
-}
+.education-section {
+  padding: 24px 0 12px 0;
+  scroll-margin-top: 80px !important;
 
-.education-block {
-  max-width: 850px;
-  margin: 0 auto 50px auto;
+  h2 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 16px 0;
+    color: var(--text-color);
+    text-decoration: underline;
+    text-decoration-color: var(--heading-underline-color);
+    text-decoration-thickness: 4px;
+    text-underline-offset: 6px;
+  }
 }
 
 .subsection-title {
-  font-size: 1.6rem;
-  color: var(--primary-color);
-  margin-bottom: 25px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid var(--border-color);
-  display: inline-block;
-}
-
-.education-item-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 40px;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 30px;
-}
-
-.education-item-container:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
-.education-logo {
-  width: 100px;
-  height: auto;
-  margin-right: 20px;
-}
-
-.education-item {
-  flex: 1;
-}
-
-.education-item h3 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  color: var(--text-color);
-  font-size: 1.4rem;
-}
-
-.education-item .institution {
-  font-style: italic;
+  font-size: 0.8rem;
+  font-weight: 700;
   color: var(--secondary-text-color);
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-weight: 500;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
-.education-item p:last-child {
-  margin-bottom: 0;
+.education-block {
+  margin-bottom: 28px;
 }
 
-/* Grilla de Certificaciones */
-.certifications-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-}
-
-.cert-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 20px;
+/* Subsección: Formación Académica */
+.takuya-bio-list {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  gap: 16px;
+  margin-top: 14px;
 
-  &:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary-color);
-    background: rgba(37, 99, 235, 0.05);
+  /* Focus Dimming Effect */
+  &:has(.bio-row:hover) .bio-row:not(:hover) {
+    opacity: 0.35;
+    filter: grayscale(30%);
+  }
+
+  .bio-row:hover {
+    opacity: 1 !important;
+    filter: none !important;
   }
 }
 
-.cert-header {
+.bio-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
-}
-
-.cert-platform {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  background: rgba(37, 99, 235, 0.1);
-  padding: 3px 10px;
+  gap: 22px;
+  padding: 12px 16px;
   border-radius: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: opacity 0.3s ease, filter 0.3s ease, background-color 0.25s ease, transform 0.25s ease;
+
+  .bio-year {
+    font-family: 'Inter', 'M PLUS 1p', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--secondary-text-color);
+    min-width: 110px;
+    flex-shrink: 0;
+    transition: color 0.25s ease;
+  }
+
+  .bio-logo-standalone {
+    width: 62px !important;
+    height: 62px !important;
+    max-width: 62px !important;
+    max-height: 62px !important;
+    object-fit: contain !important;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+
+  .bio-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+    min-width: 0;
+
+    .degree-title {
+      font-family: 'Inter', 'M PLUS 1p', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-color);
+      margin: 0;
+      line-height: 1.35;
+      transition: color 0.25s ease;
+    }
+
+    .institution-name {
+      font-family: 'Inter', 'M PLUS 1p', sans-serif;
+      font-size: 0.92rem;
+      color: var(--secondary-text-color);
+      margin: 0;
+      font-weight: 400;
+      line-height: 1.4;
+      transition: color 0.25s ease;
+    }
+  }
+
+  &:hover {
+    background-color: var(--pill-bg);
+    transform: translateX(4px);
+
+    .bio-logo-standalone {
+      transform: scale(1.1);
+    }
+
+    .bio-year, .degree-title, .institution-name {
+      color: var(--primary-color) !important;
+    }
+  }
 }
 
-.cert-year {
-  font-size: 0.85rem;
-  color: var(--secondary-text-color);
-  font-weight: 600;
+/* Subsección Certificaciones (Grilla de 2 Columnas Minimalista) */
+.certifications-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 18px;
+  margin-top: 14px;
+
+  /* Focus dimming suave */
+  &:has(.cert-row-item:hover) .cert-row-item:not(:hover) {
+    opacity: 0.35;
+    filter: grayscale(30%);
+  }
+
+  .cert-row-item:hover {
+    opacity: 1 !important;
+    filter: none !important;
+  }
 }
 
-.cert-title {
-  margin: 0;
-  font-size: 1.05rem;
-  line-height: 1.4;
-  color: var(--text-color);
-  font-weight: 600;
+.cert-row-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: opacity 0.3s ease, filter 0.3s ease, background-color 0.25s ease, transform 0.25s ease;
+
+  .cert-year {
+    font-family: 'Inter', 'M PLUS 1p', sans-serif;
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--secondary-text-color);
+    min-width: 46px;
+    flex-shrink: 0;
+    transition: color 0.25s ease;
+  }
+
+  .cert-logo-standalone {
+    width: 34px !important;
+    height: 34px !important;
+    max-width: 34px !important;
+    max-height: 34px !important;
+    object-fit: contain !important;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+
+  /* Mini grilla 2x2 para los 4 logos de Testing */
+  .cert-logos-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3px;
+    width: 34px;
+    height: 34px;
+    align-content: center;
+    justify-items: center;
+    flex-shrink: 0;
+
+    .group-logo-icon {
+      width: 15px !important;
+      height: 15px !important;
+      max-width: 15px !important;
+      max-height: 15px !important;
+      object-fit: contain !important;
+      transition: transform 0.25s ease;
+    }
+  }
+
+  .cert-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+    min-width: 0;
+
+    .cert-title {
+      font-family: 'Inter', 'M PLUS 1p', sans-serif;
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--text-color);
+      margin: 0;
+      line-height: 1.35;
+      transition: color 0.25s ease;
+    }
+
+    .cert-platform {
+      font-family: 'Inter', 'M PLUS 1p', sans-serif;
+      font-size: 0.84rem;
+      color: var(--secondary-text-color);
+      margin: 0;
+      font-weight: 400;
+      line-height: 1.35;
+      transition: color 0.25s ease;
+    }
+  }
+
+  &:hover {
+    background-color: var(--pill-bg);
+    transform: translateX(4px);
+
+    .cert-logo-standalone, .cert-logos-group {
+      transform: scale(1.1);
+    }
+
+    .cert-year, .cert-title, .cert-platform {
+      color: var(--primary-color) !important;
+    }
+  }
 }
 
 @media (max-width: 768px) {
-  .education-item-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .education-logo {
-    margin-right: 0;
-    margin-bottom: 20px;
-    width: 80px;
-  }
-
-  .certifications-grid {
+  .certifications-list {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
-}
-
-.animated-section {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.animated-section.is-visible {
-  opacity: 1;
-  transform: translateY(0);
 }

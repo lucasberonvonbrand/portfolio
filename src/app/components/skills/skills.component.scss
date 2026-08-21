@@ -1,7 +1,11 @@
 .skills-section {
-  text-align: center;
-  padding: 50px 0 40px 0;
+  text-align: left;
+  padding: 24px 0 12px 0;
   scroll-margin-top: 80px !important;
+
+  h2 {
+    margin: 0 0 16px 0;
+  }
 }
 
 .marquee-wrapper {

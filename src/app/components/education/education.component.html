@@ -1,33 +1,49 @@
-<section id="education"
-         class="education-section animated-section"
-         appScrollAnimation>
-  <h2>Educación y Certificaciones</h2>
+<section id="education" class="education-section animated-section" appScrollAnimation>
+  <h2 class="section-title">Educación</h2>
 
-  <!-- Subsección: Formación Académica -->
+  <!-- Subsección: Formación Académica (Estilo Minimalista con Logo Box de 42px) -->
   <div class="education-block">
     <h3 class="subsection-title">Formación Académica</h3>
-    
-    <div *ngFor="let edu of academicEducation" class="education-item-container">
-      <img [src]="getLogo(edu)" [alt]="edu.institution + ' logo'" class="education-logo">
-      <div class="education-item">
-        <h3>{{ edu.degree }}</h3>
-        <p class="institution">{{ edu.institution }}, {{ edu.period }}</p>
-        <p>{{ edu.description }}</p>
+
+    <div class="takuya-bio-list">
+      <div
+        *ngFor="let edu of academicEducation"
+        class="bio-row"
+        (click)="navigateToEducation(edu.id)">
+        
+        <span class="bio-year">{{ edu.startDate }} a {{ edu.endDate }}</span>
+
+        <img [src]="getLogo(edu)" [alt]="edu.institution" class="bio-logo-standalone">
+
+        <div class="bio-detail">
+          <h4 class="degree-title">{{ edu.degree }}</h4>
+          <p class="institution-name">{{ edu.institution }}</p>
+        </div>
+
       </div>
     </div>
   </div>
 
-  <!-- Subsección: Cursos y Certificaciones -->
+  <!-- Subsección: Cursos y Certificaciones (Estilo Text-First Minimalista) -->
   <div class="education-block certifications-block">
     <h3 class="subsection-title">Cursos y Certificaciones</h3>
 
-    <div class="certifications-grid">
-      <div *ngFor="let cert of certifications" class="cert-card">
-        <div class="cert-header">
-          <span class="cert-platform">{{ cert.platform }}</span>
-          <span class="cert-year">{{ cert.year }}</span>
+    <div class="certifications-list">
+      <div *ngFor="let cert of certifications" class="cert-row-item">
+        <span class="cert-year">{{ cert.year }}</span>
+
+        <!-- Logo único (Kiro, Angular, Spring Cloud, Spring Security, Spring Boot) -->
+        <img *ngIf="cert.logo" [src]="cert.logo" [alt]="cert.title" class="cert-logo-standalone">
+
+        <!-- Grupo de 4 Logos (Testing: JUnit, Mockito, GitHub Actions, SonarQube) -->
+        <div *ngIf="cert.logos" class="cert-logos-group">
+          <img *ngFor="let logoPath of cert.logos" [src]="logoPath" [alt]="cert.title" class="group-logo-icon">
         </div>
-        <h4 class="cert-title">{{ cert.title }}</h4>
+
+        <div class="cert-detail">
+          <h4 class="cert-title">{{ cert.title }}</h4>
+          <p class="cert-platform">{{ cert.platform }}</p>
+        </div>
       </div>
     </div>
   </div>

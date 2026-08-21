@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   private initIntersectionObserver(): void {
-    const sectionIds = ['sobre-mi', 'tecnologias', 'proyectos', 'education', 'contacto'];
+    const sectionIds = ['sobre-mi', 'tecnologias', 'proyectos', 'education', 'links', 'contacto'];
 
     setTimeout(() => {
       const sections = sectionIds
@@ -40,17 +40,40 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
       if (sections.length === 0) return;
 
+      const visibleSections = new Map<string, number>();
+
       this.observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              this.activeSection.set(entry.target.id);
+              visibleSections.set(entry.target.id, entry.intersectionRatio);
+            } else {
+              visibleSections.delete(entry.target.id);
             }
           });
+
+          if (visibleSections.size > 0) {
+            let bestSection = '';
+            sectionIds.forEach((id) => {
+              if (visibleSections.has(id)) {
+                const el = document.getElementById(id);
+                if (el) {
+                  const rect = el.getBoundingClientRect();
+                  if (rect.top <= window.innerHeight * 0.55 && rect.bottom >= 100) {
+                    bestSection = id;
+                  }
+                }
+              }
+            });
+
+            if (bestSection) {
+              this.activeSection.set(bestSection);
+            }
+          }
         },
         {
-          rootMargin: '-20% 0px -50% 0px',
-          threshold: 0,
+          rootMargin: '-70px 0px -15% 0px',
+          threshold: [0, 0.1, 0.25, 0.5, 0.75, 1.0],
         }
       );
 
