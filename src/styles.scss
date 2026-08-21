@@ -91,15 +91,10 @@ app-home > *,
   padding: 50px 24px;
   background-color: transparent;
   transition: border-color 0.3s ease;
-  scroll-margin-top: 80px !important;
+  scroll-margin-top: 95px !important;
 }
 
-/* Separador elegante fino entre secciones (excluyendo la sección Hero inicial) */
-app-home > * + * section,
-.main-content > * + * section {
-  border-top: 1px solid var(--border-color);
-}
-
+/* Sin líneas divisorias entre secciones */
 .hero-section {
   border-top: none !important;
 }

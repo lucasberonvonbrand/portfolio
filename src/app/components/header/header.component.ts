@@ -16,69 +16,60 @@ export class HeaderComponent implements OnInit, OnDestroy {
   themeService = inject(ThemeService);
 
   activeSection = signal<string>('sobre-mi');
-  private observer: IntersectionObserver | null = null;
+  private scrollListener: (() => void) | null = null;
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.initIntersectionObserver();
+      this.initScrollListener();
     }
   }
 
   ngOnDestroy(): void {
-    if (this.observer) {
-      this.observer.disconnect();
+    if (isPlatformBrowser(this.platformId) && this.scrollListener) {
+      window.removeEventListener('scroll', this.scrollListener);
     }
   }
 
-  private initIntersectionObserver(): void {
+  private initScrollListener(): void {
     const sectionIds = ['sobre-mi', 'tecnologias', 'proyectos', 'education', 'links', 'contacto'];
 
-    setTimeout(() => {
-      const sections = sectionIds
-        .map((id) => document.getElementById(id))
-        .filter((el): el is HTMLElement => el !== null);
+    const updateActiveSection = () => {
+      const scrollPosition = window.scrollY;
 
-      if (sections.length === 0) return;
+      // Si está en la parte superior (primeros 180px), 'sobre-mi' es siempre la sección activa
+      if (scrollPosition < 180) {
+        this.activeSection.set('sobre-mi');
+        return;
+      }
 
-      const visibleSections = new Map<string, number>();
+      // Si llegó al fondo de la página, 'contacto' es la sección activa
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
+        this.activeSection.set('contacto');
+        return;
+      }
 
-      this.observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              visibleSections.set(entry.target.id, entry.intersectionRatio);
-            } else {
-              visibleSections.delete(entry.target.id);
-            }
-          });
-
-          if (visibleSections.size > 0) {
-            let bestSection = '';
-            sectionIds.forEach((id) => {
-              if (visibleSections.has(id)) {
-                const el = document.getElementById(id);
-                if (el) {
-                  const rect = el.getBoundingClientRect();
-                  if (rect.top <= window.innerHeight * 0.55 && rect.bottom >= 100) {
-                    bestSection = id;
-                  }
-                }
-              }
-            });
-
-            if (bestSection) {
-              this.activeSection.set(bestSection);
-            }
+      // Encontrar la sección visible debajo del header (85px offset)
+      let currentSection = 'sobre-mi';
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 85) {
+            currentSection = id;
           }
-        },
-        {
-          rootMargin: '-70px 0px -15% 0px',
-          threshold: [0, 0.1, 0.25, 0.5, 0.75, 1.0],
         }
-      );
+      }
 
-      sections.forEach((section) => this.observer?.observe(section));
-    }, 400);
+      this.activeSection.set(currentSection);
+    };
+
+    this.scrollListener = updateActiveSection;
+    window.addEventListener('scroll', this.scrollListener, { passive: true });
+
+    // Ejecutar verificación inicial
+    setTimeout(() => {
+      updateActiveSection();
+    }, 100);
   }
 
   setTheme(mode: ThemeMode): void {
@@ -86,26 +77,34 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   scrollToSection(sectionId: string, event: Event): void {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
     this.activeSection.set(sectionId);
-    const currentUrl = this.router.url.split('#')[0];
 
-    if (currentUrl !== '/' && currentUrl !== '') {
-      this.router.navigate(['/'], { fragment: sectionId });
-    } else {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        const headerOffset = 80; // Holgura exacta para el header pegajoso
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    // Si hace clic en 'sobre-mi', desplaza suavemente al top absoluto de la pantalla
+    if (sectionId === 'sobre-mi') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      window.history.pushState(null, '', '#sobre-mi');
+      return;
+    }
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerOffset = 74; // Ajuste fino para que el título quede cercano al header (sin taparse)
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-        window.history.pushState(null, '', `#${sectionId}`);
-      }
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+
+      window.history.pushState(null, '', `#${sectionId}`);
     }
   }
 }

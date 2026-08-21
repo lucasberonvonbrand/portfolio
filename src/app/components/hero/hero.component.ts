@@ -1,5 +1,6 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ThemeService, ThemeMode } from '../../services/theme.service';
 
 @Component({
   selector: 'app-hero',
@@ -9,12 +10,18 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./hero.component.scss']
 })
 export class HeroComponent implements OnInit {
+  themeService = inject(ThemeService);
+
   fullName = 'Lucas Beron Von Brand';
   displayedName = signal('');
   isTypingComplete = signal(false);
 
   ngOnInit(): void {
     this.startTypingEffect();
+  }
+
+  setTheme(mode: ThemeMode): void {
+    this.themeService.setTheme(mode);
   }
 
   startTypingEffect(): void {

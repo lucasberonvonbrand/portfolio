@@ -8,8 +8,7 @@
     <div class="takuya-bio-list">
       <div
         *ngFor="let edu of academicEducation"
-        class="bio-row"
-        (click)="navigateToEducation(edu.id)">
+        class="bio-row">
         
         <span class="bio-year">{{ edu.startDate }} a {{ edu.endDate }}</span>
 
