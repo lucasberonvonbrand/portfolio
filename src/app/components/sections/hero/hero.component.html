@@ -1,0 +1,25 @@
+<section class="hero-section">
+  <!-- Selector de Tema Discreto en la parte superior derecha -->
+  <div class="hero-top-bar">
+    <app-theme-switcher />
+  </div>
+  <div class="hero-content">
+    <div class="hero-header">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          Hola, soy <span class="typed-name">{{ displayedName() }}</span><span class="cursor-caret" [class.blink]="isTypingComplete()">|</span>
+        </h1>
+        <p class="hero-subtitle">
+          <span class="subtitle-part">Desarrollador Fullstack & Java Backend</span>
+          <span class="subtitle-separator"> | </span>
+          <span class="subtitle-part">Lic. en Gestión de Tecnología</span>
+        </p>
+      </div>
+
+      <!-- Tarjeta de Foto de Perfil con Directiva 3D Tilt e Inclinación por Defecto -->
+      <div class="hero-photo" appTilt3d>
+        <img src="assets/foto-perfil.jpeg" alt="Foto de Lucas Beron Von Brand">
+      </div>
+    </div>
+  </div>
+</section>

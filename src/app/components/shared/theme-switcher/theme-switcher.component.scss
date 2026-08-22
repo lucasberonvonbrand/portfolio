@@ -1,0 +1,33 @@
+.theme-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px;
+  background-color: var(--pill-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+
+  .theme-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--secondary-text-color);
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+    &:hover {
+      color: var(--text-color);
+    }
+
+    &.active {
+      background-color: var(--primary-color);
+      color: #121214;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+  }
+}

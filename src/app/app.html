@@ -1,15 +1,14 @@
-<!-- <app-header /> -->
 <main class="main-content">
   <router-outlet />
 </main>
 <app-footer />
 
-<!-- Botón Flotante Volver Arriba Global (Se destruye completamente del DOM cuando un modal está abierto) -->
+<!-- Botón Flotante Volver Arriba Global (Se destruye completamente del DOM cuando un modal está abierto y anima suavemente su salida) -->
 <button
-  *ngIf="showScrollTop() && !isModalOpen()"
+  *ngIf="!isModalOpen()"
   type="button"
   class="scroll-to-top-btn"
-  [class.visible]="showScrollTop() && !isModalOpen()"
+  [class.visible]="showScrollTop()"
   (click)="scrollToTop()"
   title="Volver arriba"
   aria-label="Volver arriba">
