@@ -7,7 +7,7 @@
 
 Este repositorio contiene el código fuente completo de mi portfolio web profesional. Diseñado y desarrollado de forma nativa desde cero bajo una **Arquitectura Limpia (*Clean Architecture / Domain-Driven*)**, utilizando **Angular 19+**, **Signals**, **Standalone Components** y **SCSS**.
 
-Aunque mi especialización principal radica en el **desarrollo Backend con Java y Spring Boot**, construí este sitio frontend para demostrar mis capacidades técnicas en el diseño de interfaces web modernas, limpias, interactivas y altamente responsivas.
+Como **Desarrollador Fullstack** con especial fortaleza en el ecosistema **Java Backend (Spring Boot & Microservicios)**, construí esta plataforma frontend utilizando **Angular 19+** para reflejar mi capacidad de diseñar y desarrollar soluciones integrales (*End-to-End*), combinando arquitectura de servidores robusta con interfaces web modernas, limpias, reactivas y altamente responsivas.
 
 ---
 
