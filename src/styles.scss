@@ -80,18 +80,18 @@ p {
 
 section,
 section[id],
-app-home > *,
 .projects-section,
 .about-section,
 .skills-section,
 .education-section,
+.links-section,
 .contact-section {
   max-width: 820px;
   margin: 0 auto;
-  padding: 50px 24px;
+  padding: 18px 24px;
   background-color: transparent;
   transition: border-color 0.3s ease;
-  scroll-margin-top: 95px !important;
+  scroll-margin-top: 40px !important;
 }
 
 /* Sin líneas divisorias entre secciones */

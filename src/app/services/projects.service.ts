@@ -16,6 +16,7 @@ export interface Project {
   githubUrl?: string;
   demoUrl?: string;
   docUrl?: string;
+  linkedinUrl?: string;
   coverImage?: string;
   coverFit?: 'cover' | 'contain';
   coverBg?: string;
@@ -58,6 +59,11 @@ export class ProjectsService {
         'MySQL',
         'Weka AI',
         'Google Gemini',
+        'Postman',
+        'Google Antigravity',
+        'IntelliJ IDEA',
+        'Git',
+        'GitHub',
         'JUnit',
         'Mockito',
         'Maven',
@@ -155,6 +161,7 @@ export class ProjectsService {
       technologies: [
         'TypeScript',
         'React',
+        'Vite',
         'Node.js',
         'Hono',
         'MongoDB',
@@ -162,8 +169,13 @@ export class ProjectsService {
         'JWT',
         'Zod',
         'TanStack Query',
+        'HeroUI',
         'Tailwind CSS',
         'Docker',
+        'GitHub Actions',
+        'Git',
+        'GitHub',
+        'Google Antigravity',
       ],
       featured: true,
       githubUrl: 'https://github.com/lucasberonvonbrand/prueba-tecnica',
@@ -199,7 +211,7 @@ export class ProjectsService {
       coverFit: 'contain',
       coverBg: '#ffffff',
       description:
-        'Plataforma fullstack (Angular 19 + Spring Boot 3 + MySQL) enfocada en ingeniería de infraestructura, orquestación multi-contenedor con Docker Compose, optimización Multi-Stage Builds y automatización CI/CD con GitHub Actions hacia Render y Aiven.',
+        'Plataforma fullstack (Angular 19 + Spring Boot 3 + MySQL) enfocada en automatización de infraestructura, orquestación multi-contenedor con Docker Compose, optimización Multi-Stage Builds y automatización CI/CD con GitHub Actions hacia Render y Aiven.',
       responsibilities: [
         'Diseño e implementación de un pipeline completo de CI/CD con GitHub Actions que automatiza pruebas unitarias (JUnit 5, Mockito), pruebas de integración (MockMvc), compilación y despliegue continuo hacia Render y Aiven.',
         'Orquestación multi-contenedor con Docker Compose (Frontend Angular 19 + Nginx Alpine, Backend Java 21 Spring Boot 3 y base de datos MySQL 8.0 con salud verificada mediante healthchecks).',
@@ -216,12 +228,18 @@ export class ProjectsService {
         'GitHub Actions',
         'Nginx',
         'MySQL',
+        'Postman',
+        'IntelliJ IDEA',
+        'Git',
+        'GitHub',
+        'Google Antigravity',
         'JUnit 5',
         'Mockito',
       ],
       featured: true,
       githubUrl: 'https://github.com/lucasberonvonbrand/app-tasks',
       demoUrl: 'https://app-tasks-frontend.onrender.com',
+      linkedinUrl: 'https://lnkd.in/p/dYKvbjcc',
       galleryImages: [
         {
           url: 'assets/images-app-tasks/Captura de pantalla 2026-08-15 203226.png',
@@ -251,7 +269,17 @@ export class ProjectsService {
         'Centralización de la configuración de todos los microservicios utilizando Spring Cloud Config Server.',
         'Implementación del patrón Circuit Breaker con Resilience4J para mejorar la tolerancia a fallos del sistema.',
       ],
-      technologies: ['Java', 'Spring Boot', 'Spring Cloud', 'MySQL', 'Maven'],
+      technologies: [
+        'Java',
+        'Spring Boot',
+        'Spring Cloud',
+        'MySQL',
+        'Postman',
+        'IntelliJ IDEA',
+        'Git',
+        'GitHub',
+        'Maven',
+      ],
       githubUrl: 'https://github.com/lucasberonvonbrand/tienda-productos',
     },
     {
@@ -279,6 +307,10 @@ export class ProjectsService {
         'OAuth2',
         'MySQL',
         'JPA/Hibernate',
+        'Postman',
+        'IntelliJ IDEA',
+        'Git',
+        'GitHub',
         'Maven',
       ],
       githubUrl: 'https://github.com/lucasberonvonbrand/blog-spring-security',
@@ -297,6 +329,7 @@ export class ProjectsService {
     const normalized = tech.toLowerCase();
     if (normalized.includes('angular')) return 'angular.svg';
     if (normalized.includes('react')) return 'react.svg';
+    if (normalized.includes('vite')) return 'vite.svg';
     if (normalized.includes('typescript')) return 'typescript.svg';
     if (normalized.includes('javascript')) return 'javascript.svg';
     if (normalized.includes('html')) return 'html5.svg';
@@ -315,6 +348,7 @@ export class ProjectsService {
     if (normalized.includes('better auth')) return 'better-auth.svg';
     if (normalized.includes('zod')) return 'zod.svg';
     if (normalized.includes('tanstack')) return 'tanstack.svg';
+    if (normalized.includes('heroui') || normalized.includes('hero ui')) return 'heroui.svg';
     if (normalized.includes('hibernate') || normalized.includes('jpa')) return 'hibernate.svg';
     if (normalized.includes('mysql')) return 'mysql.svg';
     if (normalized.includes('mongo')) return 'mongodb.svg';
@@ -325,9 +359,12 @@ export class ProjectsService {
     if (normalized.includes('mockito')) return 'mockito.png';
     if (normalized.includes('sonarqube')) return 'sonarqube.svg';
     if (normalized.includes('github actions')) return 'github-actions.svg';
+    if (normalized.includes('github')) return 'github-dark.svg';
     if (normalized.includes('ci/cd')) return 'cicd.png';
     if (normalized.includes('git')) return 'git.svg';
     if (normalized.includes('postman')) return 'postman.svg';
+    if (normalized.includes('antigravity')) return 'google-antigravity.svg';
+    if (normalized.includes('intellij')) return 'intellij.svg';
     if (normalized.includes('maven')) return 'maven.svg';
     if (normalized.includes('gemini')) return 'gemini.svg';
     return null;

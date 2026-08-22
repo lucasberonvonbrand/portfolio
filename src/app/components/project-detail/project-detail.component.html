@@ -1,36 +1,70 @@
 <section class="project-detail-section" *ngIf="project">
-  <!-- Botón de retorno al inicio -->
-  <div class="back-navigation">
-    <a routerLink="/" class="back-link">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M19 12H5M12 19l-7-7 7-7"/>
-      </svg>
-      <span>Volver a Proyectos</span>
-    </a>
+  <!-- Barra superior con botón de retorno e indicador de tema -->
+  <div class="top-nav-bar">
+    <div class="back-navigation">
+      <button type="button" (click)="goBack()" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        <span>Volver a Proyectos</span>
+      </button>
+    </div>
+
+    <!-- Selector de Tema Discreto en la parte superior derecha -->
+    <div class="theme-switcher">
+      <button
+        type="button"
+        class="theme-btn"
+        [class.active]="themeService.currentTheme() === 'light'"
+        (click)="setTheme('light')"
+        title="Modo Claro"
+        aria-label="Modo Claro">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+        </svg>
+      </button>
+
+      <button
+        type="button"
+        class="theme-btn"
+        [class.active]="themeService.currentTheme() === 'dark'"
+        (click)="setTheme('dark')"
+        title="Modo Oscuro"
+        aria-label="Modo Oscuro">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+      </button>
+    </div>
   </div>
 
   <!-- Encabezado del Proyecto -->
   <header class="detail-header">
     <span class="detail-category" *ngIf="project.category">{{ project.category }}</span>
     <h1 class="detail-title">{{ project.title }}</h1>
-    <p class="detail-description">{{ project.description }}</p>
+    <p class="detail-description" [innerHTML]="formatDescription(project.description)"></p>
   </header>
 
-  <!-- Enlaces de Acción (GitHub, Demo Live, PDF) -->
-  <div class="detail-actions" *ngIf="project.githubUrl || project.demoUrl || project.docUrl">
-    <a *ngIf="project.githubUrl" [href]="project.githubUrl" target="_blank" rel="noopener noreferrer" class="action-btn primary-btn">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-      <span>Ver Código en GitHub</span>
-    </a>
-
-    <a *ngIf="project.demoUrl" [href]="project.demoUrl" target="_blank" rel="noopener noreferrer" class="action-btn secondary-btn">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+  <!-- Enlaces de Acción (Demo Live, GitHub, PDF) -->
+  <div class="detail-actions" *ngIf="project.githubUrl || project.demoUrl || project.docUrl || project.linkedinUrl">
+    <a *ngIf="project.demoUrl" [href]="project.demoUrl" target="_blank" rel="noopener noreferrer" class="action-btn demo-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="action-icon demo-icon"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       <span>Ver Demo en Vivo</span>
     </a>
 
+    <a *ngIf="project.githubUrl" [href]="project.githubUrl" target="_blank" rel="noopener noreferrer" class="action-btn github-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="action-icon github-icon"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+      <span>Ver Código en GitHub</span>
+    </a>
+
     <a *ngIf="project.docUrl" [href]="project.docUrl" target="_blank" rel="noopener noreferrer" class="action-btn doc-btn">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-      <span>Documentación PDF</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="action-icon doc-icon"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <span>Ver Documentación Funcional</span>
+    </a>
+
+    <a *ngIf="project.linkedinUrl" [href]="project.linkedinUrl" target="_blank" rel="noopener noreferrer" class="action-btn linkedin-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="action-icon linkedin-icon"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+      <span>Ver Explicación CI/CD en LinkedIn</span>
     </a>
   </div>
 
@@ -39,42 +73,14 @@
     <div class="warning-icon">⚡</div>
     <div class="warning-content">
       <strong>Nota sobre el despliegue en la nube:</strong>
-      <p>La versión en vivo está alojada en la infraestructura gratuita de Render & Aiven. Si el servidor se encuentra inactivo, la primera petición puede demorar entre 40 y 50 segundos mientras se inicia el contenedor.</p>
-    </div>
-  </div>
-
-  <!-- Sección de Logros Clave y Responsabilidades -->
-  <div class="detail-section" *ngIf="project.responsibilities && project.responsibilities.length > 0">
-    <h2 class="section-heading">Logros Clave y Responsabilidades de Ingeniería</h2>
-    <ul class="responsibilities-list">
-      <li *ngFor="let item of project.responsibilities">
-        <span class="bullet-check">✓</span>
-        <span class="item-text">{{ item }}</span>
-      </li>
-    </ul>
-  </div>
-
-  <!-- Tecnologías e Herramientas Utilizadas (Carrusel Infinito Marquee) -->
-  <div class="detail-section" *ngIf="project.technologies && project.technologies.length > 0">
-    <h2 class="section-heading">Tecnologías e Herramientas Utilizadas</h2>
-    
-    <div class="tech-marquee-container">
-      <div class="tech-marquee-track">
-        <div
-          *ngFor="let tech of project.technologies.concat(project.technologies).concat(project.technologies)"
-          class="tech-marquee-item"
-          [attr.title]="tech">
-          <img *ngIf="getTechIcon(tech)" [src]="'assets/' + getTechIcon(tech)" [alt]="tech" class="tech-icon-img" loading="lazy">
-          <span>{{ tech }}</span>
-        </div>
-      </div>
+      <p>La versión en vivo está alojada en la infraestructura gratuita de {{ project.id === 'el-periodico' ? 'Render & MongoDB Atlas' : 'Render & Aiven' }}. Al ser un entorno de prueba gratuito, el servicio entra en reposo tras 15 minutos de inactividad, por lo que la primera petición puede demorar unos segundos mientras se reactiva el servidor (cold start).</p>
     </div>
   </div>
 
   <!-- Galería y Capturas de Pantalla (Carrusel Horizontal Estilo Cards) -->
+  <!-- Galería de Imágenes -->
   <div class="detail-section" *ngIf="project.galleryImages && project.galleryImages.length > 0">
-    <h2 class="section-heading">Galería y Capturas de Pantalla ({{ project.galleryImages.length }})</h2>
-    <p class="gallery-subtitle">Haz clic en cualquier captura para ampliarla en alta resolución.</p>
+    <h2 class="section-heading">Galería de Imágenes</h2>
 
     <div class="gallery-carousel-wrapper">
       <!-- Flecha Navegadora Izquierda -->
@@ -87,20 +93,21 @@
       <!-- Pista Deslizante del Carrusel -->
       <div class="gallery-carousel-track" #carouselTrack>
         <div
-          *ngFor="let img of project.galleryImages; let i = index"
+          *ngFor="let item of displayImages; let i = index"
           class="carousel-card"
-          (click)="openGallery(project.galleryImages!, i)">
+          [class.scroll-start]="i === 1"
+          (click)="openGallery(project.galleryImages!, item.originalIndex)">
           
           <!-- Recuadro Fotográfico Redondeado (Estilo Página Principal) -->
-          <div class="card-image-box">
-            <img [src]="img.url" [alt]="img.caption" loading="lazy">
+          <div class="card-image-box img">
+            <img [src]="item.url" [alt]="item.caption" loading="lazy">
             <div class="zoom-hover-badge">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
             </div>
           </div>
 
           <!-- Texto de Descripción Debajo del Recuadro -->
-          <p class="card-caption-text">{{ img.caption }}</p>
+          <p class="card-caption-text">{{ item.caption }}</p>
         </div>
       </div>
 
@@ -110,6 +117,45 @@
           <path d="M9 18l6-6-6-6"/>
         </svg>
       </button>
+
+      <!-- Indicadores Puntos de la Galería (Angular Synchronized Dots) -->
+      <div class="carousel-dots-container" *ngIf="project.galleryImages">
+        <button
+          *ngFor="let img of project.galleryImages; let i = index"
+          class="dot-btn"
+          [class.active]="i === currentOriginalIndex"
+          (click)="scrollToOriginalIndex(i)"
+          [attr.aria-label]="'Ir a captura ' + (i + 1)">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección de Tareas Realizadas -->
+  <div class="detail-section" *ngIf="project.responsibilities && project.responsibilities.length > 0">
+    <h2 class="section-heading">Tareas Realizadas</h2>
+    <ul class="responsibilities-list">
+      <li *ngFor="let item of project.responsibilities">
+        <span class="bullet-check">✓</span>
+        <span class="item-text">{{ item }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Tecnologías y Herramientas Utilizadas (Carrusel Infinito Marquee) -->
+  <div class="detail-section" *ngIf="project.technologies && project.technologies.length > 0">
+    <h2 class="section-heading">Tecnologías y Herramientas Utilizadas</h2>
+    
+    <div class="tech-marquee-container">
+      <div class="tech-marquee-track">
+        <div
+          *ngFor="let tech of project.technologies.concat(project.technologies).concat(project.technologies)"
+          class="tech-marquee-item"
+          [attr.title]="tech">
+          <img *ngIf="getTechIcon(tech)" [src]="'assets/' + getTechIcon(tech)" [alt]="tech" class="tech-icon-img" loading="lazy">
+          <span>{{ tech }}</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -129,7 +175,7 @@
     </div>
 
     <!-- Miniaturas del Lightbox -->
-    <div class="lightbox-thumbnails">
+    <div class="lightbox-thumbnails" #thumbTrack>
       <div
         *ngFor="let thumb of selectedGallery; let i = index"
         class="thumb-item"

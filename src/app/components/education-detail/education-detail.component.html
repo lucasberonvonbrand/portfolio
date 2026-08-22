@@ -1,11 +1,40 @@
 <div class="education-detail-container" *ngIf="education() as edu">
-  <!-- Botón Volver -->
-  <button (click)="goBack()" class="back-btn">
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
-    </svg>
-    <span>Volver a Educación</span>
-  </button>
+  <!-- Barra superior con botón de retorno e indicador de tema -->
+  <div class="top-nav-bar">
+    <button (click)="goBack()" class="back-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      <span>Volver a Educación</span>
+    </button>
+
+    <!-- Selector de Tema Discreto en la parte superior derecha -->
+    <div class="theme-switcher">
+      <button
+        type="button"
+        class="theme-btn"
+        [class.active]="themeService.currentTheme() === 'light'"
+        (click)="setTheme('light')"
+        title="Modo Claro"
+        aria-label="Modo Claro">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+        </svg>
+      </button>
+
+      <button
+        type="button"
+        class="theme-btn"
+        [class.active]="themeService.currentTheme() === 'dark'"
+        (click)="setTheme('dark')"
+        title="Modo Oscuro"
+        aria-label="Modo Oscuro">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
 
   <!-- Encabezado de la Carrera / Institución -->
   <div class="detail-header">

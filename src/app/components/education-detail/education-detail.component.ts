@@ -1,7 +1,7 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { ThemeService } from '../../services/theme.service';
+import { ThemeService, ThemeMode } from '../../services/theme.service';
 
 export interface EducationItem {
   id: string;
@@ -30,6 +30,10 @@ export class EducationDetailComponent implements OnInit {
   themeService = inject(ThemeService);
 
   education = signal<EducationItem | null>(null);
+
+  setTheme(mode: ThemeMode): void {
+    this.themeService.setTheme(mode);
+  }
 
   private educationData: Record<string, EducationItem> = {
     unlam: {
