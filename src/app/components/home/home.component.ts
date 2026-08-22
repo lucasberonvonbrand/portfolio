@@ -23,15 +23,6 @@ import { ContactComponent } from '../contact/contact.component';
     LinksComponent,
     ContactComponent,
   ],
-  template: `
-    <app-hero />
-    <app-about />
-    <app-skills />
-    <app-projects />
-    <app-academic-education />
-    <app-courses />
-    <app-links />
-    <app-contact />
-  `,
+  templateUrl: './home.component.html',
 })
 export class HomeComponent {}

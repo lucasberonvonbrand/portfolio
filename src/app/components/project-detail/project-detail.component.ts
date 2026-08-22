@@ -1,6 +1,5 @@
-import { Location } from '@angular/common';
-import { Component, inject, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Location, CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, inject, OnInit, ViewChild, ElementRef, HostListener, signal, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService, Project } from '../../services/projects.service';
 import { ThemeService, ThemeMode } from '../../services/theme.service';
@@ -25,8 +24,27 @@ export class ProjectDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private location = inject(Location);
+  private platformId = inject(PLATFORM_ID);
   projectsService = inject(ProjectsService);
   themeService = inject(ThemeService);
+
+  showScrollTop = signal(false);
+
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.showScrollTop.set(window.scrollY > 150);
+    }
+  }
+
+  scrollToTop(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
+  }
 
   project: Project | undefined;
   selectedGallery: { url: string; caption: string }[] | null = null;
