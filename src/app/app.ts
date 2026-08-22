@@ -2,6 +2,7 @@ import { Component, HostListener, signal, PLATFORM_ID, inject } from '@angular/c
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './components/footer/footer.component';
+import { isModalOpen } from './utils/scroll-helper';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class AppComponent {
   private platformId = inject(PLATFORM_ID);
   title = 'portfolio';
   showScrollTop = signal(false);
+  isModalOpen = isModalOpen;
 
   @HostListener('window:scroll')
   onWindowScroll(): void {

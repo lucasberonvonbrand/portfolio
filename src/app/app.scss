@@ -65,3 +65,14 @@
     }
   }
 }
+
+/* Ocultar el botón Volver Arriba cuando el modal Lightbox esté activo */
+body.modal-open .scroll-to-top-btn,
+body[style*="overflow: hidden"] .scroll-to-top-btn,
+html[style*="overflow: hidden"] .scroll-to-top-btn {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(20px) !important;
+  visibility: hidden !important;
+}

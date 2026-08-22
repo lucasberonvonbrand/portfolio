@@ -1,6 +1,7 @@
 import { signal } from '@angular/core';
 
 export const activeAnchorId = signal<string>('');
+export const isModalOpen = signal<boolean>(false);
 
 function getElementTop(element: HTMLElement): number {
   let top = 0;

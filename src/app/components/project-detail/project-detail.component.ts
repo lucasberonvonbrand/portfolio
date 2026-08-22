@@ -1,8 +1,9 @@
 import { Location, CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, inject, OnInit, ViewChild, ElementRef, HostListener, signal, PLATFORM_ID } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, ViewChild, ElementRef, HostListener, signal, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService, Project } from '../../services/projects.service';
 import { ThemeService, ThemeMode } from '../../services/theme.service';
+import { isModalOpen, scrollToSection, activeAnchorId } from '../../utils/scroll-helper';
 
 export interface DisplayGalleryImage {
   url: string;
@@ -17,7 +18,9 @@ export interface DisplayGalleryImage {
   templateUrl: './project-detail.component.html',
   styleUrls: ['./project-detail.component.scss'],
 })
-export class ProjectDetailComponent implements OnInit {
+export class ProjectDetailComponent implements OnInit, OnDestroy {
+  scrollToSection = scrollToSection;
+  activeAnchorId = activeAnchorId;
   @ViewChild('carouselTrack') carouselTrack!: ElementRef<HTMLDivElement>;
   @ViewChild('thumbTrack') thumbTrack!: ElementRef<HTMLDivElement>;
 
@@ -80,6 +83,15 @@ export class ProjectDetailComponent implements OnInit {
         this.router.navigate(['/']);
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    isModalOpen.set(false);
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.classList.remove('modal-open');
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }
   }
 
   private setupDisplayImages(): void {
@@ -216,6 +228,14 @@ export class ProjectDetailComponent implements OnInit {
     }
   }
 
+  onCarouselWheel(event: WheelEvent): void {
+    if (this.carouselTrack && this.carouselTrack.nativeElement) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.carouselTrack.nativeElement.scrollLeft += event.deltaY * 1.5;
+    }
+  }
+
   scrollCarousel(direction: 'left' | 'right'): void {
     if (this.displayImages.length === 0) return;
     const nextIndex =
@@ -231,13 +251,35 @@ export class ProjectDetailComponent implements OnInit {
   openGallery(images: { url: string; caption: string }[], index: number = 0): void {
     this.selectedGallery = images;
     this.currentImageIndex = index;
+    isModalOpen.set(true);
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.classList.add('modal-open');
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    }
     this.scrollToActiveThumb();
   }
 
   closeGallery(): void {
     const lastViewedIndex = this.currentImageIndex;
     this.selectedGallery = null;
+    isModalOpen.set(false);
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.classList.remove('modal-open');
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }
     this.scrollToOriginalIndex(lastViewedIndex);
+  }
+
+  preventWheelScroll(event: WheelEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    if (event.deltaY > 0) {
+      this.nextImage();
+    } else if (event.deltaY < 0) {
+      this.prevImage();
+    }
   }
 
   nextImage(): void {

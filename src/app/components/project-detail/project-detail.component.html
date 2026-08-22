@@ -79,8 +79,16 @@
 
   <!-- Galería y Capturas de Pantalla (Carrusel Horizontal Estilo Cards) -->
   <!-- Galería de Imágenes -->
-  <div class="detail-section" *ngIf="project.galleryImages && project.galleryImages.length > 0">
-    <h2 class="section-heading">Galería de Imágenes</h2>
+  <div id="galeria-de-imagenes" class="detail-section" *ngIf="project.galleryImages && project.galleryImages.length > 0">
+    <h2 class="section-heading">
+      <a href="#galeria-de-imagenes" class="section-anchor-link" [class.active]="activeAnchorId() === 'galeria-de-imagenes'" (click)="scrollToSection('galeria-de-imagenes', $event)" title="Enlace a Galería de Imágenes">
+        <svg class="anchor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="4 17 10 12 4 7"/>
+          <line x1="12" y1="17" x2="20" y2="17"/>
+        </svg>
+      </a>
+      Galería de Imágenes
+    </h2>
 
     <div class="gallery-carousel-wrapper">
       <!-- Flecha Navegadora Izquierda -->
@@ -91,7 +99,7 @@
       </button>
 
       <!-- Pista Deslizante del Carrusel -->
-      <div class="gallery-carousel-track" #carouselTrack>
+      <div class="gallery-carousel-track" #carouselTrack (wheel)="onCarouselWheel($event)">
         <div
           *ngFor="let item of displayImages; let i = index"
           class="carousel-card"
@@ -132,8 +140,16 @@
   </div>
 
   <!-- Sección de Tareas Realizadas -->
-  <div class="detail-section" *ngIf="project.responsibilities && project.responsibilities.length > 0">
-    <h2 class="section-heading">Tareas Realizadas</h2>
+  <div id="tareas-realizadas" class="detail-section" *ngIf="project.responsibilities && project.responsibilities.length > 0">
+    <h2 class="section-heading">
+      <a href="#tareas-realizadas" class="section-anchor-link" [class.active]="activeAnchorId() === 'tareas-realizadas'" (click)="scrollToSection('tareas-realizadas', $event)" title="Enlace a Tareas Realizadas">
+        <svg class="anchor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="4 17 10 12 4 7"/>
+          <line x1="12" y1="17" x2="20" y2="17"/>
+        </svg>
+      </a>
+      Tareas Realizadas
+    </h2>
     <ul class="responsibilities-list">
       <li *ngFor="let item of project.responsibilities">
         <span class="bullet-check">✓</span>
@@ -143,8 +159,16 @@
   </div>
 
   <!-- Tecnologías y Herramientas Utilizadas (Carrusel Infinito Marquee) -->
-  <div class="detail-section" *ngIf="project.technologies && project.technologies.length > 0">
-    <h2 class="section-heading">Tecnologías & Herramientas</h2>
+  <div id="tecnologias-y-herramientas" class="detail-section" *ngIf="project.technologies && project.technologies.length > 0">
+    <h2 class="section-heading">
+      <a href="#tecnologias-y-herramientas" class="section-anchor-link" [class.active]="activeAnchorId() === 'tecnologias-y-herramientas'" (click)="scrollToSection('tecnologias-y-herramientas', $event)" title="Enlace a Tecnologías & Herramientas">
+        <svg class="anchor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="4 17 10 12 4 7"/>
+          <line x1="12" y1="17" x2="20" y2="17"/>
+        </svg>
+      </a>
+      Tecnologías & Herramientas
+    </h2>
     
     <div class="tech-marquee-container">
       <div class="tech-marquee-track">
@@ -161,17 +185,30 @@
 </section>
 
 <!-- Lightbox Modal de Imágenes -->
-<div *ngIf="selectedGallery" class="lightbox-backdrop" (click)="closeGallery()">
-  <div class="lightbox-container" (click)="$event.stopPropagation()">
-    <button class="lightbox-close" (click)="closeGallery()" aria-label="Cerrar">&times;</button>
+<div *ngIf="selectedGallery" class="lightbox-backdrop" (click)="closeGallery()" (wheel)="preventWheelScroll($event)">
+  <div class="lightbox-container" (click)="$event.stopPropagation()" (wheel)="preventWheelScroll($event)">
+    <button class="lightbox-close" (click)="closeGallery()" aria-label="Cerrar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
     
-    <div class="lightbox-main">
-      <button class="lightbox-nav prev" (click)="prevImage()" aria-label="Anterior">&#10094;</button>
+    <div class="lightbox-main" (wheel)="preventWheelScroll($event)">
+      <button class="lightbox-nav prev" (click)="prevImage()" aria-label="Anterior">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </button>
       <div class="lightbox-image-box">
         <img [src]="selectedGallery[currentImageIndex].url" [alt]="selectedGallery[currentImageIndex].caption">
         <p class="lightbox-caption">{{ selectedGallery[currentImageIndex].caption }}</p>
       </div>
-      <button class="lightbox-nav next" (click)="nextImage()" aria-label="Siguiente">&#10095;</button>
+      <button class="lightbox-nav next" (click)="nextImage()" aria-label="Siguiente">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </button>
     </div>
 
     <!-- Miniaturas del Lightbox -->

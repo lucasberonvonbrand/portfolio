@@ -24,7 +24,7 @@
 </section>
 
 <!-- Modal Flotante de Mensaje Directo (Estilo Glassmorphism Hiroki Osame) -->
-<div *ngIf="isModalOpen()" class="contact-modal-backdrop" (click)="closeModal()">
+<div *ngIf="isModalOpen()" class="contact-modal-backdrop" (click)="closeModal()" (wheel)="preventWheelScroll($event)">
   <div class="contact-modal-box" (click)="$event.stopPropagation()">
     <!-- Botón Cierre Cruz -->
     <button class="modal-close-btn" (click)="closeModal()" aria-label="Cerrar modal">&times;</button>

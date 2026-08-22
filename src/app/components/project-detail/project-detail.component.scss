@@ -287,6 +287,7 @@
   }
 
   .section-heading {
+    position: relative;
     font-family: 'M PLUS Rounded 1c', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 1.45rem;
     font-weight: 700;
@@ -298,6 +299,21 @@
     text-decoration-thickness: 4px;
     text-underline-offset: 6px;
     display: inline-block;
+
+    /* Extiende el área de captura del mouse 45px hacia la izquierda */
+    &::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      bottom: -5px;
+      left: -45px;
+      width: 45px;
+    }
+
+    &:hover .section-anchor-link {
+      opacity: 0.85;
+      pointer-events: auto;
+    }
   }
 }
 
@@ -631,11 +647,15 @@
   }
 
   .carousel-nav-btn {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
+    background-color: var(--card-background-color);
+    border: 1px solid var(--border-color);
+    color: var(--primary-color);
+    z-index: 25;
 
-    &.prev-btn { left: -10px; }
-    &.next-btn { right: -10px; }
+    &.prev-btn { left: 4px; }
+    &.next-btn { right: 4px; }
   }
 }
 
@@ -662,20 +682,38 @@
 }
 
 .lightbox-close {
-  position: absolute;
-  top: -45px;
-  right: 0;
-  background: none;
-  border: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: rgba(24, 24, 27, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   color: #ffffff;
-  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  line-height: 1;
-  opacity: 0.8;
-  transition: opacity 0.2s ease;
+  z-index: 10020;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    display: block;
+    margin: 0;
+  }
 
   &:hover {
-    opacity: 1;
+    background-color: rgba(39, 39, 42, 0.95);
+    color: var(--primary-color);
+    border-color: rgba(56, 189, 248, 0.6);
+    transform: scale(1.1);
   }
 }
 
@@ -706,10 +744,13 @@
 }
 
 .lightbox-nav {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-  font-size: 1.5rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(24, 24, 27, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  padding: 0;
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -717,15 +758,48 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s ease;
-  z-index: 10;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s ease,
+              border-color 0.25s ease,
+              box-shadow 0.25s ease,
+              color 0.25s ease;
+  z-index: 10010;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.25);
+  svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    display: block;
+    margin: 0;
   }
 
-  &.prev { margin-right: 15px; }
-  &.next { margin-left: 15px; }
+  &:hover {
+    color: var(--primary-color) !important;
+    border-color: rgba(56, 189, 248, 0.6) !important;
+    background-color: rgba(39, 39, 42, 0.95) !important;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 24px rgba(56, 189, 248, 0.3);
+  }
+
+  &.prev {
+    left: 12px;
+    margin-right: 0;
+
+    svg {
+      transform: translateX(-1px);
+    }
+  }
+
+  &.next {
+    right: 12px;
+    margin-left: 0;
+
+    svg {
+      transform: translateX(1px);
+    }
+  }
 }
 
 .lightbox-thumbnails {
@@ -785,8 +859,43 @@
     font-size: 1.7rem;
   }
 
+  .lightbox-close {
+    top: 14px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
   .lightbox-nav {
-    display: none;
+    display: flex !important;
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    background-color: rgba(24, 24, 27, 0.85) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    z-index: 10010;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &.prev {
+      left: 6px;
+      margin-right: 0;
+    }
+    &.next {
+      right: 6px;
+      margin-left: 0;
+    }
   }
 }
 

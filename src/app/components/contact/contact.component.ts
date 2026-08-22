@@ -1,10 +1,10 @@
-import { Component, ChangeDetectorRef, signal } from '@angular/core';
+import { Component, ChangeDetectorRef, signal, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScrollAnimationDirective } from '../../directives/scroll-animation.directive';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { EmailService } from '../../services/email.service';
 import { environment } from '../../../environments/environment';
-import { scrollToSection, activeAnchorId } from '../../utils/scroll-helper';
+import { scrollToSection, activeAnchorId, isModalOpen } from '../../utils/scroll-helper';
 
 @Component({
   selector: 'app-contact',
@@ -13,7 +13,7 @@ import { scrollToSection, activeAnchorId } from '../../utils/scroll-helper';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
 })
-export class ContactComponent {
+export class ContactComponent implements OnDestroy {
   scrollToSection = scrollToSection;
   activeAnchorId = activeAnchorId;
   contactForm: FormGroup;
@@ -46,11 +46,37 @@ export class ContactComponent {
 
   openModal(): void {
     this.isModalOpen.set(true);
+    isModalOpen.set(true);
+    if (typeof document !== 'undefined') {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    }
   }
 
   closeModal(): void {
     this.isModalOpen.set(false);
+    isModalOpen.set(false);
+    if (typeof document !== 'undefined') {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }
     this.submissionStatus = null;
+  }
+
+  ngOnDestroy(): void {
+    isModalOpen.set(false);
+    if (typeof document !== 'undefined') {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }
+  }
+
+  preventWheelScroll(event: WheelEvent): void {
+    const target = event.target as HTMLElement;
+    if (target && !target.closest('.contact-modal-box')) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
   }
 
   async onSubmit(): Promise<void> {

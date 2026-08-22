@@ -48,6 +48,9 @@ h1, h2, h3, h4, h5, h6, .section-title {
 html, body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
   font-family: 'Inter', 'M PLUS 1p', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
@@ -213,22 +216,6 @@ textarea:-webkit-autofill:active {
 .social-pill:hover img {
   transform: scale(1.12);
 }
-
-/* Media Queries para Diseño Responsive */
-@media (max-width: 768px) {
-  body {
-    font-size: 15px;
-  }
-
-  h1 { font-size: 2.1rem; }
-  h2 { font-size: 1.5rem; }
-
-  section {
-    padding: 30px 18px;
-  }
-}
-
-/* Enlace de Ancla en Títulos de Sección (Estilo GitHub / Modern Docs) */
 /* Enlace de Ancla en Títulos de Sección (Estilo Hiroki Osame / Takuya) */
 h2, .section-title {
   position: relative;
@@ -246,7 +233,7 @@ h2, .section-title {
 
 .section-anchor-link {
   position: absolute;
-  left: -28px;
+  left: -26px;
   top: 50%;
   transform: translateY(-50%);
   display: inline-flex;
@@ -258,7 +245,7 @@ h2, .section-title {
   text-decoration: none;
   cursor: pointer;
   transition: opacity 0.25s ease, transform 0.25s ease, color 0.25s ease;
-  padding: 6px;
+  padding: 2px 4px;
 
   .anchor-icon {
     width: 18px;
@@ -286,17 +273,67 @@ h2:hover .section-anchor-link,
   pointer-events: auto;
 }
 
+/* Media Queries para Diseño Responsive */
 @media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  h1 { font-size: 1.95rem; }
+  h2 { font-size: 1.35rem; }
+
+  section,
+  section[id],
+  .projects-section,
+  .about-section,
+  .skills-section,
+  .education-section,
+  .links-section,
+  .contact-section {
+    padding: 24px 20px 24px 26px !important;
+    box-sizing: border-box;
+  }
+
   h2::before, .section-title::before {
-    left: -30px;
-    width: 30px;
+    display: none;
   }
 
   .section-anchor-link {
-    left: -22px;
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    padding: 0;
+    margin: 0;
+
     .anchor-icon {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
     }
+
+    &:hover {
+      transform: translateY(-50%) scale(1.15);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  section,
+  section[id],
+  .projects-section,
+  .about-section,
+  .skills-section,
+  .education-section,
+  .links-section,
+  .contact-section {
+    padding: 20px 16px 20px 24px !important;
+    box-sizing: border-box;
+  }
+
+  .section-anchor-link {
+    position: absolute;
+    left: -18px;
+    display: inline-flex;
   }
 }
