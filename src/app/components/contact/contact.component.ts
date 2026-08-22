@@ -4,6 +4,7 @@ import { ScrollAnimationDirective } from '../../directives/scroll-animation.dire
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { EmailService } from '../../services/email.service';
 import { environment } from '../../../environments/environment';
+import { scrollToSection, activeAnchorId } from '../../utils/scroll-helper';
 
 @Component({
   selector: 'app-contact',
@@ -13,6 +14,8 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent {
+  scrollToSection = scrollToSection;
+  activeAnchorId = activeAnchorId;
   contactForm: FormGroup;
   isSubmitting = false;
   submissionStatus: 'success' | 'error' | null = null;
@@ -31,6 +34,14 @@ export class ContactComponent {
 
   get charCount(): number {
     return this.contactForm.get('message')?.value?.length || 0;
+  }
+
+  autoGrow(event: Event): void {
+    const textarea = event.target as HTMLTextAreaElement;
+    if (textarea) {
+      textarea.style.height = 'auto';
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
   }
 
   openModal(): void {

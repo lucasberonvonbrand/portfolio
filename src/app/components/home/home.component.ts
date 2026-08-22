@@ -4,7 +4,8 @@ import { HeroComponent } from '../hero/hero.component';
 import { AboutComponent } from '../about/about.component';
 import { SkillsComponent } from '../skills/skills.component';
 import { ProjectsComponent } from '../projects/projects.component';
-import { EducationComponent } from '../education/education.component';
+import { AcademicEducationComponent } from '../academic-education/academic-education.component';
+import { CoursesComponent } from '../courses/courses.component';
 import { LinksComponent } from '../links/links.component';
 import { ContactComponent } from '../contact/contact.component';
 
@@ -17,7 +18,8 @@ import { ContactComponent } from '../contact/contact.component';
     AboutComponent,
     SkillsComponent,
     ProjectsComponent,
-    EducationComponent,
+    AcademicEducationComponent,
+    CoursesComponent,
     LinksComponent,
     ContactComponent,
   ],
@@ -26,7 +28,8 @@ import { ContactComponent } from '../contact/contact.component';
     <app-about />
     <app-skills />
     <app-projects />
-    <app-education />
+    <app-academic-education />
+    <app-courses />
     <app-links />
     <app-contact />
   `,

@@ -1,0 +1,28 @@
+<section id="formacion-academica" class="academic-education-section animated-section" appScrollAnimation>
+  <h2 class="section-title">
+    <a href="#formacion-academica" class="section-anchor-link" [class.active]="activeAnchorId() === 'formacion-academica'" (click)="scrollToSection('formacion-academica', $event)" title="Enlace a Formación Académica">
+      <svg class="anchor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="4 17 10 12 4 7"/>
+        <line x1="12" y1="17" x2="20" y2="17"/>
+      </svg>
+    </a>
+    Formación Académica
+  </h2>
+
+  <div class="takuya-bio-list">
+    <div
+      *ngFor="let edu of academicEducation"
+      class="bio-row">
+      
+      <span class="bio-year">{{ edu.startDate }} a {{ edu.endDate }}</span>
+
+      <img [src]="getLogo(edu)" [alt]="edu.institution" class="bio-logo-standalone">
+
+      <div class="bio-detail">
+        <h3 class="degree-title">{{ edu.degree }}</h3>
+        <p class="institution-name">{{ edu.institution }}</p>
+      </div>
+
+    </div>
+  </div>
+</section>

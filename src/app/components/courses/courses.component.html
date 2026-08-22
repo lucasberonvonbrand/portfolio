@@ -1,0 +1,30 @@
+<section id="cursos" class="courses-section animated-section" appScrollAnimation>
+  <h2 class="section-title">
+    <a href="#cursos" class="section-anchor-link" [class.active]="activeAnchorId() === 'cursos'" (click)="scrollToSection('cursos', $event)" title="Enlace a Cursos y Certificaciones">
+      <svg class="anchor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="4 17 10 12 4 7"/>
+        <line x1="12" y1="17" x2="20" y2="17"/>
+      </svg>
+    </a>
+    Cursos y Certificaciones
+  </h2>
+
+  <div class="certifications-list">
+    <div *ngFor="let cert of certifications" class="cert-row-item">
+      <span class="cert-year">{{ cert.year }}</span>
+
+      <!-- Logo único -->
+      <img *ngIf="cert.logo" [src]="cert.logo" [alt]="cert.title" class="cert-logo-standalone">
+
+      <!-- Grupo de 4 Logos (Testing) -->
+      <div *ngIf="cert.logos" class="cert-logos-group">
+        <img *ngFor="let logoPath of cert.logos" [src]="logoPath" [alt]="cert.title" class="group-logo-icon">
+      </div>
+
+      <div class="cert-detail">
+        <h3 class="cert-title">{{ cert.title }}</h3>
+        <p class="cert-platform">{{ cert.platform }}</p>
+      </div>
+    </div>
+  </div>
+</section>

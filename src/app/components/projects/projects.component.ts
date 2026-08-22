@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ProjectsService, Project } from '../../services/projects.service';
+import { scrollToSection, activeAnchorId } from '../../utils/scroll-helper';
 
 @Component({
   selector: 'app-projects',
@@ -11,6 +12,8 @@ import { ProjectsService, Project } from '../../services/projects.service';
   imports: [CommonModule],
 })
 export class ProjectsComponent {
+  scrollToSection = scrollToSection;
+  activeAnchorId = activeAnchorId;
   private router = inject(Router);
   projectsService = inject(ProjectsService);
 

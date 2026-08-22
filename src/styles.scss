@@ -132,6 +132,40 @@ button, input, textarea, select {
   font-family: inherit;
 }
 
+textarea {
+  resize: none;
+}
+
+/* Fix para recuadro blanco de autocompletado en Chrome / WebKit */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--text-color) !important;
+  -webkit-box-shadow: 0 0 0px 1000px #1a1a1e inset !important;
+  box-shadow: 0 0 0px 1000px #1a1a1e inset !important;
+  transition: background-color 50000s ease-in-out 0s !important;
+}
+
+[data-theme="light"] {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  textarea:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--text-color) !important;
+    -webkit-box-shadow: 0 0 0px 1000px #f4f4f5 inset !important;
+    box-shadow: 0 0 0px 1000px #f4f4f5 inset !important;
+  }
+}
+
 /* Iconos Adaptables según Tema (Light / Dark) */
 .github-icon-dark {
   display: inline-block !important;
@@ -191,5 +225,78 @@ button, input, textarea, select {
 
   section {
     padding: 30px 18px;
+  }
+}
+
+/* Enlace de Ancla en Títulos de Sección (Estilo GitHub / Modern Docs) */
+/* Enlace de Ancla en Títulos de Sección (Estilo Hiroki Osame / Takuya) */
+h2, .section-title {
+  position: relative;
+
+  /* Extiende el área de captura del mouse 45px hacia la izquierda */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    bottom: -5px;
+    left: -45px;
+    width: 45px;
+  }
+}
+
+.section-anchor-link {
+  position: absolute;
+  left: -28px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  opacity: 0;
+  pointer-events: auto;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.25s ease, transform 0.25s ease, color 0.25s ease;
+  padding: 6px;
+
+  .anchor-icon {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.2;
+    transition: transform 0.25s ease;
+  }
+
+  &:hover {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateY(-50%) scale(1.15);
+  }
+
+  &.active {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
+/* Al pasar el mouse por encima del título o por el margen izquierdo */
+h2:hover .section-anchor-link,
+.section-title:hover .section-anchor-link {
+  opacity: 0.85;
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  h2::before, .section-title::before {
+    left: -30px;
+    width: 30px;
+  }
+
+  .section-anchor-link {
+    left: -22px;
+    .anchor-icon {
+      width: 16px;
+      height: 16px;
+    }
   }
 }

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <clipPath id="pepsiClip">
+      <circle cx="256" cy="256" r="236"/>
+    </clipPath>
+  </defs>
+  <!-- Fondo base oscuro sutil del portfolio (#121214) -->
+  <circle cx="256" cy="256" r="256" fill="#121214"/>
+  
+  <g clip-path="url(#pepsiClip)">
+    <!-- Cinta S central en blanco nítido (#FFFFFF) -->
+    <circle cx="256" cy="256" r="236" fill="#ffffff"/>
+    
+    <!-- Ola Superior: Azul Cyan Primario del Portfolio (#38bdf8) -->
+    <path fill="#38bdf8" d="M20 256 C20 125.7 125.7 20 256 20 C386.3 20 492 125.7 492 256 C492 230 420 180 330 180 C210 180 140 260 20 256 Z"/>
+    
+    <!-- Ola Inferior: Azul Profundo del Portfolio (#0284c7) -->
+    <path fill="#0284c7" d="M20 256 C20 386.3 125.7 492 256 492 C386.3 492 492 386.3 492 256 C492 280 410 332 290 332 C170 332 80 250 20 256 Z"/>
+  </g>
+</svg>

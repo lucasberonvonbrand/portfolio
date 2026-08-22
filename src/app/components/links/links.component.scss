@@ -20,7 +20,7 @@
 .web-links-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 4px;
   width: 100%;
 
   /* Focus dimming idéntico a Educación y Proyectos */
@@ -38,9 +38,9 @@
 .web-link-item {
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 10px 14px;
-  border-radius: 12px;
+  gap: 16px;
+  padding: 6px 12px;
+  border-radius: 10px;
   text-decoration: none;
   cursor: pointer;
   transition: opacity 0.3s ease, filter 0.3s ease, background-color 0.25s ease, transform 0.25s ease;

@@ -1,5 +1,13 @@
 <section id="tecnologias" class="skills-section">
-  <h2>Stack & Tecnologías</h2>
+  <h2 class="section-title">
+    <a href="#tecnologias" class="section-anchor-link" [class.active]="activeAnchorId() === 'tecnologias'" (click)="scrollToSection('tecnologias', $event)" title="Enlace a Tecnologías & Herramientas">
+      <svg class="anchor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="4 17 10 12 4 7"/>
+        <line x1="12" y1="17" x2="20" y2="17"/>
+      </svg>
+    </a>
+    Tecnologías & Herramientas
+  </h2>
 
   <div class="marquee-wrapper">
     <!-- Marquee Fila 1 (Izquierda a Derecha) -->

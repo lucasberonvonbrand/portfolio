@@ -1,7 +1,14 @@
 <section id="proyectos" class="projects-section">
   <div class="section-header">
-    <h2 class="section-title">Proyectos Destacados</h2>
-    <p class="section-subtitle">Selección de proyectos de ingeniería fullstack, arquitecturas backend y soluciones cloud.</p>
+    <h2 class="section-title">
+      <a href="#proyectos" class="section-anchor-link" [class.active]="activeAnchorId() === 'proyectos'" (click)="scrollToSection('proyectos', $event)" title="Enlace a Proyectos Destacados">
+        <svg class="anchor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="4 17 10 12 4 7"/>
+          <line x1="12" y1="17" x2="20" y2="17"/>
+        </svg>
+      </a>
+      Proyectos Destacados
+    </h2>
   </div>
 
   <!-- Grilla Minimalista de 2 Columnas (Estilo Takuya Matsuyama) -->

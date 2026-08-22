@@ -2,6 +2,7 @@ import { Component, inject, OnInit, OnDestroy, signal, PLATFORM_ID } from '@angu
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { ThemeService, ThemeMode } from '../../services/theme.service';
+import { scrollToSection } from '../../utils/scroll-helper';
 
 @Component({
   selector: 'app-header',
@@ -31,7 +32,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   private initScrollListener(): void {
-    const sectionIds = ['sobre-mi', 'tecnologias', 'proyectos', 'education', 'links', 'contacto'];
+    const sectionIds = ['sobre-mi', 'tecnologias', 'proyectos', 'formacion-academica', 'cursos', 'links', 'contacto'];
 
     const updateActiveSection = () => {
       const scrollPosition = window.scrollY;
@@ -77,34 +78,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   scrollToSection(sectionId: string, event: Event): void {
-    if (event) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    this.activeSection.set(sectionId);
-
-    // Si hace clic en 'sobre-mi', desplaza suavemente al top absoluto de la pantalla
-    if (sectionId === 'sobre-mi') {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-      window.history.pushState(null, '', '#sobre-mi');
-      return;
-    }
-
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerOffset = 74; // Ajuste fino para que el título quede cercano al header (sin taparse)
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-
-      window.history.pushState(null, '', `#${sectionId}`);
-    }
+    scrollToSection(sectionId, event);
   }
 }
