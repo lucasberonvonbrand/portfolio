@@ -115,6 +115,6 @@ npm run build
 ## 👨‍💻 Autor
 
 - **Lucas Beron Von Brand**
-  - **LinkedIn**: [lucas-beron](https://www.linkedin.com/in/lucas-beron/)
+  - **LinkedIn**: [lucas-beron-von-brand]([https://www.linkedin.com/in/lucas-beron/](https://www.linkedin.com/in/lucas-beron-von-brand-5aa37919a/))
   - **GitHub**: [@lucasberonvonbrand](https://github.com/lucasberonvonbrand)
   - **Email**: [lucasberonvonbrand@gmail.com](mailto:lucasberonvonbrand@gmail.com)
